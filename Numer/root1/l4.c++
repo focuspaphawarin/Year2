@@ -1,29 +1,28 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
-#include <cstdlib>
 
 using namespace std;
 
 int main()
 {
-    double xl = 1.5, xr = 2.0;
-    double xm;
-    double fxl, fxm, fxr;
+    double xl = 0.0 ,xr = 10.0 ;
+    double xm ;
+    double fxl,fxm,fxr;
     int count;
-    while (true)
+    while(true)
     {
-        xm = (xl + xr) / 2;
-        fxl = pow(xl, 4) - 13;
-        fxm = pow(xm, 4) - 13;
-        fxr = pow(xr, 4) - 13;
-        if (fxl * fxm > 0)
+        xm = (xl+xr)/2;
+        fxl = pow(xl,2)-7;
+        fxm = pow(xm,2)-7;
+        fxr = pow(xr,2)-7;
+        if(fxl*fxm>0)
         {
-            xl = xm;
+            xl=xm;
         }
         else
         {
-            xr = xm;
+            xr=xm;
         }
         count++;
         // cout <<"xl = "<< xl <<" xm = "<< xm <<" xr = "<<xr<<endl;
