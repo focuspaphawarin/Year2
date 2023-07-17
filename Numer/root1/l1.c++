@@ -1,10 +1,12 @@
 #include <iostream>
+#include <cstdlib>
+
 using namespace std;
 
 int main()
 {
     double x, y, z;
-    double a;
+    double a; 
     double r[100];
     for (int i = 0; i <= 10; i++)
     {
@@ -21,26 +23,17 @@ int main()
         }
     }
     x = y;
-    while (y <= x <= z)
+    while (y <= x && x <= z)
     {
         x = x + 0.000001;
         a = 43 * x - 180;
-        if (a > 0)
+        if (abs(a) < 0.0001)
         {
-            if (a < 0.0001)
-            {
-                cout << x;
-                break;
-            }
-        }
-        else
-        {
-            if (a > 0.0001)
-            {
-                cout << x;
-                break;
-            }
+            cout << x;
+            break;
+
         }
     }
     // cout << y <<endl<< z;
+    // 4.18605
 }
