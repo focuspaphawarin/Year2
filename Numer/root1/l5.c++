@@ -27,8 +27,8 @@ int main()
             xr = xm;
         }
         count++;
-        // cout <<"xl = "<< xl <<" xm = "<< xm <<" xr = "<<xr<<endl;
-        // cout <<"fxl = "<< fxl <<" fxm = "<< fxm <<" fxr = "<<fxr<<endl;
+        cout <<"xl = "<< xl <<" xm = "<< xm <<" xr = "<<xr<<endl;
+        cout <<"fxl = "<< fxl <<" fxm = "<< fxm <<" fxr = "<<fxr<<endl;
         if (abs(fxm) < 0.000001)
         {
             cout << fixed << setprecision(4);

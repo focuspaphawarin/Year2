@@ -2,3 +2,7 @@
 *.out
 *.exe
 *.class
+/OOP/lab/LAB/week2/Main/nbproject/private/
+/OOP/LAB/week1/build/
+/OOP/LAB/week1/nbproject/private/
+/OOP/LAB/week2/Main/nbproject/private/
