@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <iostream>
 #include<cmath>
 using namespace std;
 
@@ -14,15 +14,23 @@ double difffunc(double x)
     fx = 2*x;
     return fx;
 }
+double xn(double x,double fx,double difffx)
+{
+    double xn;
+    xn = x - (fx/difffx);
+    return xn;
+}
 
 int main()
 {
-    double x0=2.00,xnew,xold,p_xold;
-    xold = func(x0);
-    do{
-         p_xold = xold;
-        xnew = func(xold); 
+    double x0=2.00,xnew=0.00,xold,p_xold;
+    xold = xn(x0,func(x0),difffunc(x0)); 
+    do {
+        p_xold = xold;
+        xnew = xn(xold,func(xold),difffunc(xold)); 
         xold=xnew; 
+    } while (abs(xnew - p_xold) > 0.0000001);  
+    cout << xnew << endl;
 
-    }
 }
+// while (abs(xnew)-abs(p_xold) > 0.000001);

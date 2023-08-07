@@ -18,6 +18,6 @@ int main()
         p_xold = xold;
         xnew = func(xold); 
         xold=xnew; 
-    } while (abs(xnew)-abs(p_xold) > 0.0000001);
+    } while (abs(xnew-p_xold) > 0.0000001);
     cout << xnew << endl;
 }
