@@ -33,4 +33,4 @@ int main()
     cout << xnew << endl;
 
 }
-// while (abs(xnew)-abs(p_xold) > 0.000001);
+
