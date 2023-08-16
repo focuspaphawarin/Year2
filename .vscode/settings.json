@@ -3,6 +3,7 @@
         "ostream": "cpp",
         "complex": "cpp",
         "iomanip": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "__tuple": "cpp"
     }
 }

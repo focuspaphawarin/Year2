@@ -24,15 +24,23 @@ int main()
     for (int j = 1 ; j < 4; j++) 
     {
         anew[2][j] = ((a[2][j]/a[2][1])*a[1][1])-a[1][j] ;
+        // anew[2][j] = a[1][j] - (a[2][j] / a[2][1] * a[1][1]);
+        // cout << anew[2][j] <<" " ;
+        // cout << "a[1][" << j << "] = " << a[1][j] << endl;
+
+    }
+    // cout << endl;
+    for (int j = 0; j < 4; j++) 
+    {
         cout << anew[2][j] <<" " ;
 
     }
     cout << endl;
     x3 =  a[2][3]/a[2][2];
-    x2 = ((a[1][3]) - (x3*a[1][2]))/a[1][1];
-    x1 = ((a[0][3]) - (x2 * a[0][1]) - (x3*a[0][2]))/a[0][0];
-    cout << x1 <<endl;
-    cout << x2 <<endl;
-    cout << x3 <<endl;
+    x2 = ((a[1][3])-(x3*a[1][2]))/a[1][1];
+    x1 = ((a[0][3])-(x3*a[0][2])-(x2 * a[0][1]))/a[0][0];
+    // cout << x1 <<endl;
+    // cout << x2 <<endl;
+    // cout << x3 <<endl;
 
 }
