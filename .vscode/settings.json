@@ -4,6 +4,7 @@
         "complex": "cpp",
         "iomanip": "cpp",
         "iostream": "cpp",
-        "__tuple": "cpp"
+        "__tuple": "cpp",
+        "new": "cpp"
     }
 }
