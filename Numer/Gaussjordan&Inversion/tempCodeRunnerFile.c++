@@ -41,19 +41,19 @@ int main()
     {
         for(j=0;j<3;j++)
         {
-            x[i] = (a[i][j+3]*b[j])+x[i];
+            x[i]=(a[i][j+3]*b[j])+x[i];
         }
     cout <<"x["<<i+1<< "] = "<<x[i]<<endl;
     }
-    cout << "Matrix a:\n";
-    for (i=0;i<3;i++) 
-    {
-        for (j=0;j<6;j++) 
-        {
-            cout << a[i][j] << "\t";
-        }
-        cout << endl;
-    }
+    // cout << "Matrix a:\n";
+    // for (i=0;i<3;i++) 
+    // {
+    //     for (j=0;j<6;j++) 
+    //     {
+    //         cout << a[i][j] << "\t";
+    //     }
+    //     cout << endl;
+    // }
 }
 
 
