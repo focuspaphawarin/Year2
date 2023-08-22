@@ -38,13 +38,13 @@ int main()
     {
         cout <<"x["<<i+1<< "] = "<<a[i][3]<<endl;
     }
-    // cout << "Matrix a:\n";
-    // for (i=0;i<3;i++) 
-    // {
-    //     for (j=0;j<4;j++) 
-    //     {
-    //         cout << a[i][j] << "\t";
-    //     }
-    //     cout << endl;
-    // }
+    cout << "Matrix a:\n";
+    for (i=0;i<3;i++) 
+    {
+        for (j=0;j<4;j++) 
+        {
+            cout << a[i][j] << "\t";
+        }
+        cout << endl;
+    }
 }
