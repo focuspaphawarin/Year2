@@ -7,7 +7,7 @@ struct Node
     Node *next;
 };
 
-void push (Node**head_ref,int new_data)
+void push(Node**head_ref,int new_data)
 {
     Node* new_node = new Node;
     new_node -> data = new_data;
@@ -45,8 +45,8 @@ void append(Node**head_ref,int new_data)
 
     }
     last -> next = new_node;
-
 }
+
 int main()
 {
     Node *head = NULL;
@@ -60,6 +60,12 @@ int main()
     }
     insertAfter(temp,7);
     // append(&head,99);
+
+    //deleteFirst
+    temp = head;
+    head = head->next;
+    delete temp;
+
     while(head != NULL)
     {
         cout << head->data << " ";
