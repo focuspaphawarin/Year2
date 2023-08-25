@@ -54,12 +54,12 @@ int main()
     push(&head, 2);
     push(&head, 4);
     Node *temp = head;
-    while(temp!=NULL&&temp->data!=1)
+    while(temp!=NULL&&temp->data!=2)
     {
         temp = temp->next;
     }
-    insertAfter(temp,3);
-    append(&head,99);
+    insertAfter(temp,7);
+    // append(&head,99);
     while(head != NULL)
     {
         cout << head->data << " ";
