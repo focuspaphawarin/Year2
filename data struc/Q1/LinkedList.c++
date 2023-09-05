@@ -59,7 +59,7 @@ int main()
         temp = temp->next;
     }
     insertAfter(temp,7);
-    // append(&head,99);
+    append(&head,99);
 
     //deleteFirst
     temp = head;

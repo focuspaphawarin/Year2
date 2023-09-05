@@ -1,1 +1,1 @@
-    append(&head,99);
+    deleteFirst
