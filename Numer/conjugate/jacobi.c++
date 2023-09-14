@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-double func(double x[])
+void func(double x[])
 {
     double a[4][4] = {{5,2,0,0},{2,5,2,0},{0,2,5,2},{0,0,2,5}};
     double b[4] = {12,17,14,7};   
@@ -15,21 +15,22 @@ double func(double x[])
 			x[i]=(b[i]-sum)/a[i][i];
 		}
 	}
-    return x[4];
+    // return x[];
 }
 int main()
 {    
     double xold[4],xnew[4],p_xold[4];
     double x0[4] = {0.0,0.0,0.0,0.0};
+
     for(int i=0;i<4;i++)
     {
-        xold[i] = func(x0[4]);
-        do 
-        {
-            p_xold[i] = xold[i];
-            xnew[i] = func(xold[i]);
-            xold[i] = xnew[i];
-        } while (abs(xnew - p_xold) > 0.001);
+        xold[i] = func(x0[i]);
+    //     do 
+    //     {
+    //         p_xold[i] = xold[i];
+    //         xnew[i] = func(xold[i]);
+    //         xold[i] = xnew[i];
+    //     } while (abs(xnew - p_xold) > 0.001);
     }
     for(int i=0;i<4;i++)
     {
