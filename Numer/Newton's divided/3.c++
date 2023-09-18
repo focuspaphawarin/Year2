@@ -8,6 +8,12 @@ double func (double c0,double c1,double c2,double c3,double c4,double x,double x
     fx = c0+(c1*(x-x0))+(c2*(x-x0)(x-x1))+(c3*(x-x0)(x-x1)(x-x2))+(c4*(x-x0)(x-x1)(x-x2)(x-x3));
     return fx;
 }
+double cfunc (double xm , double xn)
+{
+    double ans;
+    ans = cfunc(xm,xn)/xm-xn;
+    return ans;
+}
 int main()
 {
     double c0,c1,cold,cnew,p_cold;
