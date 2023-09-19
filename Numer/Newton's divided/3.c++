@@ -11,19 +11,26 @@ double func (double c0,double c1,double c2,double c3,double c4,double x,double x
 }
 double cfunc (double xm,double xs,double ym, double ys)
 {
-    double cnew,cold,p_cold,ym,ys;
-    if(abs(xm-xs) <= 1)
-    {
-        return (ym-ys)/(xm-xs);
-    }
-    else
-    {
-        p_cold = cold ;
-        cnew = (cfunc (xm,xs+1) - cold) / (xm-xs);
+    double cnew,cold,p_cold;
+    while (abs(xm - xs) > 1) {
+        p_cold = cold;
+        cnew = (cfunc(xm, xs + 1, ym, ys) - cold) / (xm - xs);
         cold = cnew;
-        
+
     }
     return cnew;
+    // if(abs(xm-xs) <= 1)
+    // {
+    //     return (ym-ys)/(xm-xs);
+    // }
+    // else
+    // {
+    //     p_cold = cold ;
+    //     cnew = (cfunc(xm,xs+1)-cold)/(xm-xs);
+    //     cold = cnew;
+        
+    // }
+    // return cnew;
 }
 int main()
 {
