@@ -19,6 +19,5 @@ int main()
     //     c1 = y1-c0/x1-x0;
     //     // c0=c1;
     // } while (c1!=x1 || c0!=x0);
-    cout << func(c0,c1,42235,x0);
-    
+    cout << func(c0,c1,42235,x0); 
 }
