@@ -1,43 +1,49 @@
 #include<iostream>
 using namespace std;
 
-void func(double x[])
-{
-    double a[4][4] = {{5,2,0,0},{2,5,2,0},{0,2,5,2},{0,0,2,5}};
-    double b[4] = {12,17,14,7};   
-    double ans[4]; 
-    for(int i=0;i<4;i++)
-    {
-		double sum = 0.0;
-		for(int j=i+1;j<4;j++)
-        {
-			sum = (a[i][j]*x[j])+sum;
-			x[i]=(b[i]-sum)/a[i][i];
-		}
-	}
-    // return x[];
-}
 int main()
-{    
-    double xold[4],xnew[4],p_xold[4];
-    double x0[4] = {0.0,0.0,0.0,0.0};
+{
 
-    for(int i=0;i<4;i++)
-    {
-        xold[i] = func(x0[i]);
-    //     do 
-    //     {
-    //         p_xold[i] = xold[i];
-    //         xnew[i] = func(xold[i]);
-    //         xold[i] = xnew[i];
-    //     } while (abs(xnew - p_xold) > 0.001);
-    }
-    for(int i=0;i<4;i++)
-    {
-        cout <<"x["<<i+1<< "] = "<<xnew[i]<<endl;
-    }
 }
 
+// #include<iostream>
+// using namespace std;
+
+// void func(double x[])
+// {
+//     double a[4][4] = {{5,2,0,0},{2,5,2,0},{0,2,5,2},{0,0,2,5}};
+//     double b[4] = {12,17,14,7};
+//     double ans[4];
+//     for(int i=0;i<4;i++)
+//     {
+// 		double sum = 0.0;
+// 		for(int j=i+1;j<4;j++)
+//         {
+// 			sum = (a[i][j]*x[j])+sum;
+// 			ans[i]=(b[i]-sum)/a[i][i];
+// 		}
+// 	}
+//     // return x[];
+// }
+// int main()
+// {    
+//     double xold[4],xnew[4],p_xold[4];
+//     double x0[4] = {0.0,0.0,0.0,0.0};
+//     for(int i=0;i<4;i++)
+//     {
+//         xold[i] = func(x0[i]);
+//         do 
+//         {
+//             p_xold[i] = xold[i];
+//             xnew[i] = func(xold[i]);
+//             xold[i] = xnew[i];
+//         } while (abs(xnew - p_xold) > 0.001);
+//     }
+//     for(int i=0;i<4;i++)
+//     {
+//         cout <<"x["<<i+1<< "] = "<<xnew[i]<<endl;
+//     }
+// }
 
 // #include<iostream>
 // using namespace std;
