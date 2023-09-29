@@ -15,7 +15,7 @@ class MaxHeap
             arr[y] = temp;
         }
 
-        void Max(int data)
+        void InsertMaxHeap(int index)
         {
             int parent = index/2;
             if(index <= 1)
@@ -25,7 +25,7 @@ class MaxHeap
             else if(arr[parent]<arr[index])
             {
                 Swap(parent,index);
-                Max(parent);
+                InsertMaxHeap(parent);
             }
             else{return;}
         }
@@ -33,8 +33,24 @@ class MaxHeap
         void Insert(int data)
         {
             arr[index] = data;
-            Max(data);
+            InsertMaxHeap(index);
             index++;
+        }
+
+        void DeleteMaxHeap(int index)
+        {
+            int child;
+            if(arr[index+1]>arr[index+2])
+            {
+                child = index+1;
+            }
+            else{child = index+2;}
+            if(arr[index]<arr[child])
+            {
+                Swap(index,child);
+                DeleteMaxHeap(child);
+            }
+            else{return;}
         }
 
         void Delete()
@@ -42,7 +58,7 @@ class MaxHeap
             cout << arr[1] << endl;
             arr[1] = arr[index-1];
             index--;
-            Max(1);
+            DeleteMaxHeap(1);
 
         }
 
@@ -54,6 +70,8 @@ class MaxHeap
             }
             cout << endl;
         }
+
+
 
 };
 int main()
