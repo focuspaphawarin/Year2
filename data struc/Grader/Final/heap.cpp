@@ -40,11 +40,11 @@ class MaxHeap
         void DeleteMaxHeap(int index)
         {
             int child;
-            if(arr[index+1]>arr[index+2])
+            if(arr[2*index]>arr[(2*index)+1])
             {
-                child = index+1;
+                child = 2*index;
             }
-            else{child = index+2;}
+            else{child = (2*index)+1;}
             if(arr[index]<arr[child])
             {
                 Swap(index,child);
