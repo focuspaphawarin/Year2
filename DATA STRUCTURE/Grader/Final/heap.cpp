@@ -7,7 +7,6 @@ class MaxHeap
         int arr[100];
         int heapsize = 0;
         int lastindex = 1;
-
         void Swap(int x,int y)
         {
             int temp = 0;
@@ -15,7 +14,6 @@ class MaxHeap
             arr[x] = arr[y];
             arr[y] = temp;
         }
-
         void InsertMaxHeap(int lastindex)
         {
             int parent = lastindex/2;
@@ -30,14 +28,12 @@ class MaxHeap
             }
             else{return;}
         }
-
         void Insert(int data)
         {
             arr[lastindex] = data;
             InsertMaxHeap(lastindex);
             lastindex++;
         }
-
         void DeleteMaxHeap(int index)
         {
             int child;
@@ -58,7 +54,6 @@ class MaxHeap
                 
             }
         }
-
         void Delete()
         {
             cout << arr[1] << endl;
@@ -67,7 +62,6 @@ class MaxHeap
             DeleteMaxHeap(1);
 
         }
-
         void Show()
         {
             for(int i=1;i<lastindex;i++)
@@ -76,9 +70,6 @@ class MaxHeap
             }
             cout << endl;
         }
-
-
-
 };
 int main()
 {
