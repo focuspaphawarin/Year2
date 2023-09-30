@@ -4,8 +4,9 @@ using namespace std ;
 class MaxHeap
 {
     public:
-        int arr[1000];
-        int index = 1;
+        int arr[100];
+        int heapsize = 0;
+        int lastindex = 1;
 
         void Swap(int x,int y)
         {
@@ -15,16 +16,16 @@ class MaxHeap
             arr[y] = temp;
         }
 
-        void InsertMaxHeap(int index)
+        void InsertMaxHeap(int lastindex)
         {
-            int parent = index/2;
-            if(index <= 1)
+            int parent = lastindex/2;
+            if(lastindex <= 1)
             {
                 return;
             }
-            else if(arr[parent]<arr[index])
+            else if(arr[parent]<arr[lastindex])
             {
-                Swap(parent,index);
+                Swap(parent,lastindex);
                 InsertMaxHeap(parent);
             }
             else{return;}
@@ -32,39 +33,44 @@ class MaxHeap
 
         void Insert(int data)
         {
-            arr[index] = data;
-            InsertMaxHeap(index);
-            index++;
+            arr[lastindex] = data;
+            InsertMaxHeap(lastindex);
+            lastindex++;
         }
 
         void DeleteMaxHeap(int index)
         {
             int child;
-            if(arr[2*index]>arr[(2*index)+1])
+            int left = 2*index;
+            int right = (2*index)+1;
+            if(left<lastindex)
             {
-                child = 2*index;
+                if(arr[left]>=arr[right])
+                {
+                    child = left;
+                }
+                else{child = right;}
+                if(arr[index]<arr[child])
+                {
+                    Swap(index,child);
+                    DeleteMaxHeap(child);
+                }
+                
             }
-            else{child = (2*index)+1;}
-            if(arr[index]<arr[child])
-            {
-                Swap(index,child);
-                DeleteMaxHeap(child);
-            }
-            else{return;}
         }
 
         void Delete()
         {
             cout << arr[1] << endl;
-            arr[1] = arr[index-1];
-            index--;
+            arr[1] = arr[lastindex-1];
+            lastindex--;
             DeleteMaxHeap(1);
 
         }
 
         void Show()
         {
-            for(int i=1;i<index;i++)
+            for(int i=1;i<lastindex;i++)
             {
                 cout << arr[i] << " ";
             }
