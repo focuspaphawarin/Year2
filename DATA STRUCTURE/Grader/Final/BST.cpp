@@ -232,6 +232,7 @@ int main()
         }
         else if (input == 'd')
         {
+            cin >> value;
             b.Delete(root,value);
         }
     } while (input != 'x');
