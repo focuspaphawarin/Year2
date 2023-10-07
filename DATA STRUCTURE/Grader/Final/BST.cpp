@@ -18,7 +18,7 @@ public:
 	BST* Delete(BST*, int);
 
 	// Inorder traversal.
-	// void Inorder(BST*);
+	void Breadth(BST*);
     void Inorder(BST*);
     void Preorder(BST*);
     void Postorder(BST*);
@@ -91,6 +91,31 @@ BST* BST::Search(BST* root, int value)
 
 // Inorder traversal function.
 // This gives data in sorted order.
+void BST::Breadth(BST* root)
+{
+    BST* pr = root;
+    BST* chl = root->left;
+    BST* chr = root->right;
+ 
+    do
+    {
+        cout << root->data << " ";
+        pr = chl;
+        Breadth(root->left);
+        Breadth(root->right);
+        pr = chr;
+        Breadth(root->left);
+	    Breadth(root->right);
+
+    }while (chr != NULL) 
+
+    // cout << root->data << " ";
+	// Breadth(root->left);
+	// Breadth(root->right);
+
+
+}
+
 void BST::Preorder(BST* root)
 {
 	if (!root) 
@@ -214,10 +239,10 @@ int main()
                 b.Insert(root,value);
             }
         }
-        // else if (input == 'b')
-        // {
-        //     b.Breadth(root);
-        // }
+        else if (input == 'b')
+        {
+            b.Breadth(root);
+        }
         else if (input == 'i')
         {
             b.Inorder(root);
