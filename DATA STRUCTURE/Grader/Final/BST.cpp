@@ -1,5 +1,6 @@
 #include<iostream>
-using namespace std ;
+#include<queue>
+using namespace std;
 
 class BST {
 	int data;
@@ -17,11 +18,22 @@ public:
 	BST* Search(BST*, int);
 	BST* Delete(BST*, int);
 
+	int getData() const {
+		return data;
+	}
+
+	BST* getLeft() const {
+		return left;
+	}
+
+	BST* getRight() const {
+		return right;
+	}
+
 	// Inorder traversal.
-	void Breadth(BST*);
-    void Inorder(BST*);
-    void Preorder(BST*);
-    void Postorder(BST*);
+	void Inorder(BST*);
+	void Preorder(BST*);
+	void Postorder(BST*);
 };
 
 // Default Constructor definition.
@@ -44,85 +56,65 @@ BST::BST(int value)
 BST* BST::Insert(BST* root, int value)
 {
 	if (!root) 
-    { // if (root == NULL)
-	  // Insert the first node, if root is NULL.
+	{
+		// Insert the first node, if root is NULL.
 		return new BST(value);
 	}
 
 	// Insert data.
 	if (value > root->data) {
-		// Insert right node data, if the 'value'
+		// Insert right node data if the 'value'
 		// to be inserted is greater than 'root' node data.
-
-		// Process right nodes.
 		root->right = Insert(root->right, value);
 	}
 	else if (value < root->data) {
-		// Insert left node data, if the 'value'
+		// Insert left node data if the 'value'
 		// to be inserted is smaller than 'root' node data.
-
-		// Process left nodes.
 		root->left = Insert(root->left, value);
 	}
 
-	// Return 'root' node, after insertion.
+	// Return 'root' node after insertion.
 	return root;
 }
 
 BST* BST::Search(BST* root, int value)
 {
 	if (!root)
-    { // return NULL means NOT FOUND
+	{ 
 		return root;
 	}
 	if (value == root->data)
-    {
+	{
 		return root;
 	}
-	else if (value > root->data) 
-    {
+	else if (value > root->data)
+	{
 		return Search(root->right, value);
 	}
-	else if (value < root->data) 
-    {
+	else if (value < root->data)
+	{
 		return Search(root->left, value);
 	}
 }
 
-// Inorder traversal function.
-// This gives data in sorted order.
-void BST::Breadth(BST* root)
+void BST::Inorder(BST* root)
 {
-    BST* pr = root;
-    BST* chl = root->left;
-    BST* chr = root->right;
- 
-    do
-    {
-        cout << root->data << " ";
-        pr = chl;
-        Breadth(root->left);
-        Breadth(root->right);
-        pr = chr;
-        Breadth(root->left);
-	    Breadth(root->right);
-
-    }while (chr != NULL) 
-
-    // cout << root->data << " ";
-	// Breadth(root->left);
-	// Breadth(root->right);
-
-
+	if (!root) 
+	{
+		return;
+	}
+	Inorder(root->left);
+	cout << root->getData() << ","; 
+	Inorder(root->right);
 }
 
 void BST::Preorder(BST* root)
 {
 	if (!root) 
-    {
+	{
 		return;
 	}
-	cout << root->data << " ";
+	cout << root->getData() << ","; 
 	Preorder(root->left);
 	Preorder(root->right);
 }
@@ -130,136 +122,127 @@ void BST::Preorder(BST* root)
 void BST::Postorder(BST* root)
 {
 	if (!root) 
-    {
+	{
 		return;
 	}
 	Postorder(root->left);
 	Postorder(root->right);
-	cout << root->data << " ";
-}
-
-void BST::Inorder(BST* root)
-{
-	if (!root) 
-    {
-		return;
-	}
-	Inorder(root->left);
-	cout << root->data << " ";
-	Inorder(root->right);
+	cout << root->getData() << ","; 
 }
 
 BST* BST::Delete(BST* root, int k)
 {
-    // Base case
-    if (root == NULL)
-        return root;
- 
-    // Recursive calls for ancestors of
-    // node to be deleted
-    if (k < root->data) {
-        root->left = Delete(root->left, k);
-        return root;
-    }
-    else if (k > root->data) {
-        root->right = Delete(root->right, k);
-        return root;
-    }
- 
-    // IN CASE of K == root->data
-    // We reach here when root is the node
-    // to be deleted.
- 
-    // If one of the children is empty
-    if (root->left == NULL) {
-        BST* temp = root->right;
-        delete root;
-        return temp;
-    }
-    else if (root->right == NULL) {
-        BST* temp = root->left;
-        delete root;
-        return temp;
-    }
- 
-    // If both children exist
-    else 
-    {
+	if (root == NULL)
+		return root;
 
-        BST* succParent = root;
- 
-        // Find successor
-        BST* succ = root->right;
-        while (succ->left != NULL) {
-            succParent = succ;
-            succ = succ->left;
-        }
- 
-        // Delete successor.  Since successor
-        // is always left child of its parent
-        // we can safely make successor's right
-        // right child as left of its parent.
-        // If there is no succ, then assign
-        // succ->right to succParent->right
-        if (succParent != root)
-            succParent->left = succ->right;
-        else
-            succParent->right = succ->right;
- 
-        // Copy Successor Data to root
-        root->data = succ->data;
- 
-        // Delete Successor and return root
-        delete succ;
-        return root;
-    }
+	if (k < root->data) {
+		root->left = Delete(root->left, k);
+		return root;
+	}
+	else if (k > root->data) {
+		root->right = Delete(root->right, k);
+		return root;
+	}
+
+	if (root->left == NULL) {
+		BST* temp = root->right;
+		delete root;
+		return temp;
+	}
+	else if (root->right == NULL) {
+		BST* temp = root->left;
+		delete root;
+		return temp;
+	}
+
+	BST* succParent = root;
+	BST* succ = root->right;
+	while (succ->left != NULL) {
+		succParent = succ;
+		succ = succ->left;
+	}
+
+	if (succParent != root)
+		succParent->left = succ->right;
+	else
+		succParent->right = succ->right;
+
+	root->data = succ->data;
+	delete succ;
+	return root;
 }
 
+void printLevelOrder(BST* root)
+{
+	if (!root)
+		return;
 
+	queue<BST*> q;
+	q.push(root);
 
+	while (!q.empty())
+	{
+		int levelSize = q.size();
+		for (int i = 0; i < levelSize; ++i)
+		{
+			BST* current = q.front();
+			q.pop();
+			cout << current->getData() << ","; 
 
-// Driver code
+			if (current->getLeft()) 
+				q.push(current->getLeft());
+			if (current->getRight()) 
+				q.push(current->getRight());
+		}
+		cout << "|";
+	}
+}
+
 int main()
 {
 	BST b, *root = NULL;
-    char input;
-    int value;
-    do
-    {
-        cin >> input;
-        if(input == 'a')
-        {
-            cin >> value ;
-            if(!root)
-            {
-                root = b.Insert(root,value);
-            }
-            else
-            {
-                b.Insert(root,value);
-            }
-        }
-        else if (input == 'b')
-        {
-            b.Breadth(root);
-        }
-        else if (input == 'i')
-        {
-            b.Inorder(root);
-        }
-        else if (input == 'p')
-        {
-            b.Preorder(root);
-        } 
-        else if (input == 't')
-        {
-            b.Postorder(root);
-        }
-        else if (input == 'd')
-        {
-            cin >> value;
-            b.Delete(root,value);
-        }
-    } while (input != 'x');
+	char input;
+	int value;
+	do
+	{
+		cin >> input;
+		if (input == 'a')
+		{
+			cin >> value;
+			if (!root)
+			{
+				root = b.Insert(root, value);
+			}
+			else
+			{
+				b.Insert(root, value);
+			}
+		}
+		else if (input == 'b')
+		{
+			printLevelOrder(root);
+			cout << endl;
+		}
+		else if (input == 'i')
+		{
+			b.Inorder(root);
+			cout << endl;
+		}
+		else if (input == 'p')
+		{
+			b.Preorder(root);
+			cout << endl;
+		}
+		else if (input == 't')
+		{
+			b.Postorder(root);
+			cout << endl;
+		}
+		else if (input == 'd')
+		{
+			cin >> value;
+			root = b.Delete(root, value);
+		}
+	} while (input != 'x');
 	return 0;
 }
