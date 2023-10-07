@@ -98,10 +98,9 @@ void BST::Preorder(BST* root)
 		return;
 	}
 	cout << root->data << " ";
-	Inorder(root->left);
-	Inorder(root->right);
+	Preorder(root->left);
+	Preorder(root->right);
 }
-
 
 void BST::Postorder(BST* root)
 {
@@ -109,8 +108,8 @@ void BST::Postorder(BST* root)
     {
 		return;
 	}
-	Inorder(root->left);
-	Inorder(root->right);
+	Postorder(root->left);
+	Postorder(root->right);
 	cout << root->data << " ";
 }
 
