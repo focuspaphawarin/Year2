@@ -3,8 +3,7 @@ import { Button, Container, Form, Table } from "react-bootstrap";
 import { evaluate } from 'mathjs'
 
 const Sample =()=>{
-    const print = () =>
-    {
+    const print = () =>{
         console.log(data)
         setValueIter(data.map((x)=>x.iteration));
         setValueXl(data.map((x)=>x.Xl));
