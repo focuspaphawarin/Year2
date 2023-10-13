@@ -1,9 +1,39 @@
 #include<iostream>
 using namespace std;
 
+void func(double metrix[][4],double x[],double b[])
+{
+    double ans[4];
+    // for (int k=0;k<4;k++)
+    // {
+
+    // }
+    for(int i=0;i<4;i++)
+    {
+		double sum = 0.0;
+        cout<<"before x = "<<x[i]<<endl;
+		for(int j=i;j<4;j++)
+        {
+			sum = (metrix[i][j]*x[j])+sum;
+			x[i]=(b[i]-sum)/metrix[i][i];
+            cout<<"After x = "<<x[i]<<endl;
+		}
+        cout<<"Sum = "<<sum<<endl;
+    }
+    
+}
 int main()
 {
+    double a[4][4] = {{5,2,0,0},{2,5,2,0},{0,2,5,2},{0,0,2,5}};
+    double x0[4] = {0.0,0.0,0.0,0.0};
+    double b[4] = {12,17,14,7};
+    func(a,x0,b);
+    func(a,x0,b);
+    for(int i=0;i<4;i++)
+    {
 
+        cout <<"x["<<i+1<< "] = "<<x0[i]<<endl;
+    }
 }
 
 // #include<iostream>
@@ -14,14 +44,14 @@ int main()
 //     double a[4][4] = {{5,2,0,0},{2,5,2,0},{0,2,5,2},{0,0,2,5}};
 //     double b[4] = {12,17,14,7};
 //     double ans[4];
-//     for(int i=0;i<4;i++)
-//     {
-// 		double sum = 0.0;
-// 		for(int j=i+1;j<4;j++)
-//         {
-// 			sum = (a[i][j]*x[j])+sum;
-// 			ans[i]=(b[i]-sum)/a[i][i];
-// 		}
+    // for(int i=0;i<4;i++)
+    // {
+	// 	double sum = 0.0;
+	// 	for(int j=i+1;j<4;j++)
+    //     {
+	// 		sum = (a[i][j]*x[j])+sum;
+	// 		ans[i]=(b[i]-sum)/a[i][i];
+	// 	}
 // 	}
 //     // return x[];
 // }
@@ -39,10 +69,10 @@ int main()
 //             xold[i] = xnew[i];
 //         } while (abs(xnew - p_xold) > 0.001);
 //     }
-//     for(int i=0;i<4;i++)
-//     {
-//         cout <<"x["<<i+1<< "] = "<<xnew[i]<<endl;
-//     }
+    // for(int i=0;i<4;i++)
+    // {
+    //     cout <<"x["<<i+1<< "] = "<<xnew[i]<<endl;
+    // }
 // }
 
 // #include<iostream>
