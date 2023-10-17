@@ -36,7 +36,7 @@ double funcMid(int n,double xn,double x0,double h,double maxd,double arrfx[])
 
 int main()
 {
-    int n = 1;
+    int n = 2;
     double x0 = 2.0 ,xn = 8.0;
     double h = (xn-x0)/n;
     cout << "H = "<<h<<endl;
