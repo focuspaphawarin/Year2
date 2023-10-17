@@ -57,8 +57,8 @@ int main()
     cout << "REAL = " << R << endl;
 
     double I = 0.0;
-    I = h/2*(funcfx(maxd,arrfx,x0)+funcfx(maxd,arrfx,xn)+(2*(funcMid(n,xn,x0,h,maxd,arrfx))));
+    I = (h/2)*(funcfx(maxd,arrfx,x0)+funcfx(maxd,arrfx,xn)+(2*(funcMid(n,xn,x0,h,maxd,arrfx))));
     cout << "I = " << I <<endl;
 
-    cout << " ERROR = " << ((R-I)/R)*100 <<endl;
+    cout << "ERROR = " << ((R-I)/R)*100 <<endl;
 }
