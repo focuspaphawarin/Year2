@@ -2,11 +2,11 @@ import './Item.css';
 
 function Item(props)
 {
-  const{title,thumbnaiUrl}=props;
+  const{name}=props;
     return(
         <div className="item">
-          <img src={thumbnaiUrl}/>
-          <h4>{title}</h4>
+          <img src={name.thumbnalUrl}/>
+          <h4>{name.title}</h4>
         </div>
     );
 }

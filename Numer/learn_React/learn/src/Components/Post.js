@@ -1,12 +1,13 @@
 import './Post.css';
-function Post()
+function Post(props)
 {
+    const{tt} = props;
     return(
         <div className="post">
             <div className="post-bg" />
             <div className="post-content">
-                <img src="/image/PP.jpg" />
-                <h4>หมาบ้า</h4>
+                <img src={tt.thumbnalUrl} />
+                <h4>{tt.title}</h4>
             </div>
         </div>
     );
