@@ -1,4 +1,4 @@
-#include<istream>
+#include<iostream>
 #include<math.h>
 using namespace std;
 
@@ -38,8 +38,8 @@ double funcMid(int n,double xn,double x0,double h,double maxd,double arrfx[])
 
 int main()
 {
-    int n = 2;
-    double x0 = 2.0 ,xn = 8.0;
+    int n = 6;
+    double x0 = -1.0 ,xn = 2.0;
     double h = (xn-x0)/(2*n);
     cout << "H = " << h << endl;
 
@@ -56,10 +56,13 @@ int main()
     double fxn = funcIn(maxd,arrfx,xn);
     double fx0 = funcIn(maxd,arrfx,x0);
     double R = fxn-fx0;
+    cout << "Fxn = " << fxn <<endl;
+    cout << "Fx0 = " << fx0 <<endl;
+
     cout << "REAL = " << R << endl;
 
     double I = 0.0;
-    I = (h/2)*(funcfx(maxd,arrfx,x0)+funcfx(maxd,arrfx,xn)+funcMid(n,xn,x0,h,maxd,arrfx));
+    I = (h/3)*(funcfx(maxd,arrfx,x0)+funcfx(maxd,arrfx,xn)+funcMid(n,xn,x0,h,maxd,arrfx));
     cout << "I = " << I <<endl;
 
     cout << "ERROR = " << ((R-I)/R)*100 <<endl;
