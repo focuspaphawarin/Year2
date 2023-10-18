@@ -1,127 +1,209 @@
 #include <iostream>
 using namespace std;
 
-class TreeNode {
+class Node {
 public:
-    int value;
-    TreeNode* left;
-    TreeNode* right;
-
-    TreeNode(int val) {
-        value = val;
-        left = nullptr;
-        right = nullptr;
-    }
+    int data;
+    int height;
+    Node* left;
+    Node* right;
+    Node(int d){
+    	data=d;
+    	height=0;
+    	left=NULL;
+    	right=NULL;
+	}
+    //Node(int d) : data(d), left(NULL), right(NULL), height(0) {}
 };
 
-class BinaryTree {
-private:
-    TreeNode* root;
-
+class AVLTree {
 public:
-    BinaryTree() {
-        root = nullptr;
+    Node* root = NULL;
+
+    void add(int data) {
+        root = addNode(data, root);
     }
 
-    void insert(int value) {
-        root = _insertRec(root, value);
+    void remove(int data) {
+        root = deleteNode(data, root);
     }
 
-    TreeNode* _insertRec(TreeNode* node, int value) {
-        if (node == nullptr) {
-            return new TreeNode(value);
-        }
-
-        if (value < node->value) {
-            node->left = _insertRec(node->left, value);
-        }
-        else if (value > node->value) {
-            node->right = _insertRec(node->right, value);
-        }
-
-        return node;
+    void preorderTraversal() {
+        preorder(root);
+        cout << endl;
     }
 
-    void deleteNode(int value) {
-        root = _deleteRec(root, value);
+    void preorder(Node* t) {
+        if (t != NULL) {
+            cout << t->data << " ";
+            preorder(t->left);
+            preorder(t->right);
+        }
     }
 
-    TreeNode* _deleteRec(TreeNode* node, int value) {
-        if (node == nullptr) {
-            return node;
+    Node* addNode(int data, Node* t) {
+        if (t == NULL) {
+            return new Node(data);
+        }
+        if (data < t->data) {
+            t->left = addNode(data, t->left);
+        } else if (data > t->data) {
+            t->right = addNode(data, t->right);
+        } else {
+            return t;
+        }
+        t->height = max(height(t->left), height(t->right)) + 1;
+
+        int balance = balanceFactor(t);
+
+        // Left Left Case
+        if (balance > 1 && data < t->left->data) {
+            return rightRotate(t);
         }
 
-        if (value < node->value) {
-            node->left = _deleteRec(node->left, value);
-        }
-        else if (value > node->value) {
-            node->right = _deleteRec(node->right, value);
-        }
-        else {
-            if (node->left == nullptr) {
-                return node->right;
-            }
-            else if (node->right == nullptr) {
-                return node->left;
-            }
-
-            node->value = minValueNode(node->right);
-            node->right = _deleteRec(node->right, node->value);
+        // Left Right Case
+        if (balance > 1 && data > t->left->data) {
+            t->left = leftRotate(t->left);
+            return rightRotate(t);
         }
 
-        return node;
+        // Right Right Case
+        if (balance < -1 && data > t->right->data) {
+            return leftRotate(t);
+        }
+
+        // Right Left Case
+        if (balance < -1 && data < t->right->data) {
+            t->right = rightRotate(t->right);
+            return leftRotate(t);
+        }
+
+        return t;
     }
 
-    int minValueNode(TreeNode* node) {
-        TreeNode* current = node;
-        while (current->left != nullptr) {
+    Node* rightRotate(Node* y) {
+        Node* x = y->left;
+        Node* T2 = x->right;
+
+        x->right = y;
+        y->left = T2;
+
+        y->height = 1 + max(height(y->left), height(y->right));
+        x->height = 1 + max(height(x->left), height(x->right));
+
+        return x;
+    }
+
+    Node* leftRotate(Node* x) {
+        Node* y = x->right;
+        Node* T2 = y->left;
+
+        y->left = x;
+        x->right = T2;
+
+        x->height = 1 + max(height(x->left), height(x->right));
+        y->height = 1 + max(height(y->left), height(y->right));
+
+        return y;
+    }
+
+    int height(Node* t) {
+        if (t == NULL) {
+            return -1;
+        }
+        return t->height;
+    }
+
+    int balanceFactor(Node* t) {
+        if (t == NULL) {
+            return 0;
+        }
+        return height(t->left) - height(t->right);
+    }
+
+    Node* minNode(Node* t) {
+        Node* current = t;
+        while (current->left != NULL) {
             current = current->left;
         }
-        return current->value;
+        return current;
     }
 
-    void printInorder() {
-        _inorder(root);
-    }
+    Node* deleteNode(int data, Node* t) {
+        if (t == NULL) {
+            return t;
+        }
+        if (data < t->data) {
+            t->left = deleteNode(data, t->left);
+        } else if (data > t->data) {
+            t->right = deleteNode(data, t->right);
+        } else {
+            if (t->left == NULL || t->right == NULL) {
+                Node* temp = (t->left != NULL) ? t->left : t->right;
+                if (temp == NULL) {
+                    temp = t;
+                    t = NULL;
+                } else {
+                    *t = *temp;
+                }
+                delete temp;
+            } else {
+                Node* temp = minNode(t->right);
+                t->data = temp->data;
+                t->right = deleteNode(temp->data, t->right);
+            }
+        }
+        if (t == NULL) {
+            return t;
+        }
+        t->height = max(height(t->left), height(t->right)) + 1;
+        int balance = balanceFactor(t);
 
-    void _inorder(TreeNode* node) {
-    if (node != nullptr) {
-        _inorder(node->left);
-        cout << node->value << " ";
-        _inorder(node->right);
+        // Left Left Case
+        if (balance > 1 && balanceFactor(t->left) >= 0) {
+            return rightRotate(t);
+        }
+
+        // Left Right Case
+        if (balance > 1 && balanceFactor(t->left) < 0) {
+            t->left = leftRotate(t->left);
+            return rightRotate(t);
+        }
+
+        // Right Right Case
+        if (balance < -1 && balanceFactor(t->right) <= 0) {
+            return leftRotate(t);
+        }
+
+                // Right Left Case
+        if (balance < -1 && balanceFactor(t->right) > 0) {
+            t->right = rightRotate(t->right);
+            return leftRotate(t);
+        }
+        return t;
     }
-}
 };
 
 int main() {
-    BinaryTree binaryTree;
-
-    cout << "Enter 'a' to insert, 'd' to delete, 'p' to print In-order, 'x' to exit: ";
-    char input;
+    AVLTree t;
     int value;
-
-    while (true) {
-        cin >> input;
-
-        if (input == 'a') {
-            cout << "Enter a value to insert: ";
+    char c;
+    do
+    {
+        cin >> c;
+        if (c == 'a') {
             cin >> value;
-            binaryTree.insert(value);
+            t.add(value);
         }
-        else if (input == 'd') {
-            cout << "Enter a value to delete: ";
+        if (c == 'd') {
             cin >> value;
-            binaryTree.deleteNode(value);
+            t.remove(value);
         }
-        else if (input == 'p') {
-            cout << "In-order traversal: ";
-            binaryTree.printInorder();
-            cout << endl;
+        if (c == 'p') {
+            t.preorderTraversal();
         }
-        else if (input == 'x') {
-            break;
-        }
-    }
+    } while(c!='x');
 
     return 0;
 }
+
