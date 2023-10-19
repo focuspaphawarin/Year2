@@ -13,12 +13,12 @@ function App() {
   const textInput = <input type="text"/>
 
   /* button */
-  const okButton = 
-  (
-  <button>
-    OK
-  </button>
-  );
+  // const okButton = 
+  // (
+  // <button>
+  //   OK
+  // </button>
+  // );
   const Elements = pics.map((pics,index) => 
   {
     return <Item key={index} name={pics} />
@@ -27,7 +27,7 @@ function App() {
   let post = null;
   if(!!selected) /* if null = false ถ้าไม่null = true จะเข้าเงื่อนไข */
   {
-    post = <Post tt={selected}/>
+    post = <Post />
   }
   return (
     <div className="App">
