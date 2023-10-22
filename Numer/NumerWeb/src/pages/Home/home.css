@@ -1,0 +1,22 @@
+.home
+{
+    background-color: #FFFACD;
+}
+.box
+{
+    background-color: #8598b1;
+    display: flex;
+    justify-content:flex-start;
+}
+.root
+{
+    margin: 5px;
+
+    border: 2px solid #3a4553;
+    background-color:  #656358;
+}
+.linear
+{
+    margin: 5px;
+    border: 2px solid #2F4F4F;
+}
