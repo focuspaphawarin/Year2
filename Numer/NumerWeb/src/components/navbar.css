@@ -24,6 +24,7 @@
 .Name
 {
   margin-right: 2em;
+  text-align: center;
 }
 .name
 {
@@ -33,5 +34,8 @@
 .stdnum
 {
   color: beige;
-
+}
+.Atag
+{
+  text-decoration: none;
 }

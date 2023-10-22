@@ -4,19 +4,39 @@
 }
 .box
 {
-    background-color: #8598b1;
+    background-color: #d0e0f5;
     display: flex;
     justify-content:flex-start;
 }
 .root
 {
     margin: 5px;
-
-    border: 2px solid #3a4553;
-    background-color:  #656358;
+    border: 2px solid  #8598b1;
+}
+.root:hover
+{
+    background-color: beige!important;
+    border: 2px solid  #000000
 }
 .linear
 {
     margin: 5px;
-    border: 2px solid #2F4F4F;
+    border: 2px solid  #8598b1;
+}
+.linear:hover
+{
+    background-color: beige;
+    border: 2px solid  #000000
+}
+.interpolation
+{
+    margin: 5px;
+}
+.extrapolation
+{
+    margin: 5px;
+}
+.integration
+{
+    margin: 5px;
 }

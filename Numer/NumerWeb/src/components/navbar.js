@@ -4,7 +4,9 @@ function Nav() {
         <header className="header">
             <div className='container'>
                 <div className='Topic'>
-                    <h2 className="topic">NUMERICAL WEB</h2>
+                    <a href="/" className='Atag'>
+                        <h2 className="topic">NUMERICAL WEB</h2>
+                    </a>
                 </div>
                 <div className='Name'>
                     <h5 className="name">Paphawarin Suchantabut</h5>
