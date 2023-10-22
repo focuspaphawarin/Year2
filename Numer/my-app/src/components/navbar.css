@@ -1,0 +1,19 @@
+.header
+{
+  border-bottom: 1px solid gray;
+  height: 50px;
+  display: flex;
+  justify-content:first baseline;
+  align-items:first baseline;
+}
+.app-grid
+{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 16px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-left: auto;
+  padding: 30px;
+}
