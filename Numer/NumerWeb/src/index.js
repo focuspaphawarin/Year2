@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Graphical from './pages/Root/Graphical methods/Graphical';
+import Bisection from './pages/Root/Bisection search/Bisection';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "Graphical",
     element: <Graphical/>,
+  },
+  {
+    path: "Bisection",
+    element: <Bisection/>,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -13,7 +13,7 @@ function Home() {
 
                     <Dropdown.Menu>
                         <Dropdown.Item href="/Graphical">Graphical methods</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Bisection serch</Dropdown.Item>
+                        <Dropdown.Item href="/Bisection">Bisection serch</Dropdown.Item>
                         <Dropdown.Item href="#/action-3">False Position methods</Dropdown.Item>
                         <Dropdown.Item href="#/action-3">One Point Iteration methods</Dropdown.Item>
                         <Dropdown.Item href="#/action-3">Newton Raphson methods</Dropdown.Item>
