@@ -6,7 +6,7 @@ import pics from './Data/pics';
 import React, { useState } from 'react';
 
 function App() {
-  const [selected,setSelected] = useState(pics[1]); 
+  const [selected,setSelected] = useState(pics[0]); 
   /* text = ข้อมูลที่สามารถนำไปใช้ต่อในApp setText = setข้อมูลใหม่ให้text */
 
   /* input */
@@ -27,7 +27,7 @@ function App() {
   let post = null;
   if(!!selected) /* if null = false ถ้าไม่null = true จะเข้าเงื่อนไข */
   {
-    post = <Post />
+    post = <Post tt={selected}/>
   }
   return (
     <div className="App">
