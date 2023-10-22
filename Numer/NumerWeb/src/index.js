@@ -6,6 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Graphical from './pages/Root/Graphical methods/Graphical';
 import Bisection from './pages/Root/Bisection search/Bisection';
+import FalsePosition from './pages/Root/False position methods/FalsePosition';
+import OnePoint from './pages/Root/One point iteration methods/OnePoint';
+import Newton from './pages/Root/Newton raphson methods/Newton';
+import Secant from './pages/Root/Secant methods/Secant';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -22,6 +26,22 @@ const router = createBrowserRouter([
   {
     path: "Bisection",
     element: <Bisection/>,
+  },
+  {
+    path: "FalsePosition",
+    element: <FalsePosition/>,
+  },
+  {
+    path: "OnePoint",
+    element: <OnePoint/>,
+  },
+  {
+    path: "Newton",
+    element: <Newton/>,
+  },
+  {
+    path: "Secant",
+    element: <Secant/>,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
