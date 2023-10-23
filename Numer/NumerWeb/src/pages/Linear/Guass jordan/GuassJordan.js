@@ -1,13 +1,14 @@
 import React from 'react'
 import Nav from '../../../components/navbar'
-function Newton() {
+function GuassJordan()
+{
     return (
         <div>
             <Nav />
             <div>
-                New
+                เก๊าจอ
             </div>
         </div>
     )
 }
-export default Newton
+export default GuassJordan

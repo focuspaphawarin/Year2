@@ -1,13 +1,14 @@
 import React from 'react'
 import Nav from '../../../components/navbar'
-function Newton() {
+function GuassEli()
+{
     return (
         <div>
             <Nav />
             <div>
-                New
+                เก๊าอี
             </div>
         </div>
     )
 }
-export default Newton
+export default GuassEli

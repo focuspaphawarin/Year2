@@ -1,13 +1,14 @@
 import React from 'react'
 import Nav from '../../../components/navbar'
-function Newton() {
+function Jacobi()
+{
     return (
         <div>
             <Nav />
             <div>
-                New
+                จาโค
             </div>
         </div>
     )
 }
-export default Newton
+export default Jacobi

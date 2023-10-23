@@ -1,13 +1,14 @@
 import React from 'react'
 import Nav from '../../../components/navbar'
-function Newton() {
+function Conjugate()
+{
     return (
         <div>
             <Nav />
             <div>
-                New
+                คอนจูววววว
             </div>
         </div>
     )
 }
-export default Newton
+export default Conjugate

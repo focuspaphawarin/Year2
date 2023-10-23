@@ -1,13 +1,14 @@
 import React from 'react'
 import Nav from '../../../components/navbar'
-function Newton() {
+function Cramer()
+{
     return (
         <div>
             <Nav />
             <div>
-                New
+                ใคเหมอ
             </div>
         </div>
     )
 }
-export default Newton
+export default Cramer

@@ -14,6 +14,12 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Cramer from './pages/Linear/Cramer\'s rule/Cramer';
+import GuassEli from './pages/Linear/Guass elimination/GuassEli';
+import GuassJordan from './pages/Linear/Guass jordan/GuassJordan';
+import Inversion from './pages/Linear/Metrix inversion/Inversion';
+import Jacobi from './pages/Linear/Jacobi iteration methods/Jacobi';
+import Conjugate from './pages/Linear/Conjugate gradient methods/Conjugate';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,6 +48,30 @@ const router = createBrowserRouter([
   {
     path: "Secant",
     element: <Secant/>,
+  },
+  {
+    path: "Cramer",
+    element: <Cramer/>,
+  },
+  {
+    path: "GuassEli",
+    element: <GuassEli/>,
+  },
+  {
+    path: "GuassJordan",
+    element: <GuassJordan/>,
+  },
+  {
+    path: "Inversion",
+    element: <Inversion/>,
+  },
+  {
+    path: "Jacobi",
+    element: <Jacobi/>,
+  },
+  {
+    path: "Conjugate",
+    element: <Conjugate/>,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));

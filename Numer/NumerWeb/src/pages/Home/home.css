@@ -8,35 +8,13 @@
     display: flex;
     justify-content:flex-start;
 }
-.root
+.method
 {
     margin: 5px;
     border: 2px solid  #8598b1;
 }
-.root:hover
+.method:hover
 {
     background-color: beige!important;
     border: 2px solid  #000000
-}
-.linear
-{
-    margin: 5px;
-    border: 2px solid  #8598b1;
-}
-.linear:hover
-{
-    background-color: beige;
-    border: 2px solid  #000000
-}
-.interpolation
-{
-    margin: 5px;
-}
-.extrapolation
-{
-    margin: 5px;
-}
-.integration
-{
-    margin: 5px;
 }

@@ -1,13 +1,14 @@
 import React from 'react'
 import Nav from '../../../components/navbar'
-function Newton() {
+function Inversion()
+{
     return (
         <div>
             <Nav />
             <div>
-                New
+                อินน
             </div>
         </div>
     )
 }
-export default Newton
+export default Inversion
