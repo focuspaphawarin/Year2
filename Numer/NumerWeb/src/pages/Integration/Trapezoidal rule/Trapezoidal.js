@@ -1,14 +1,14 @@
 import React from 'react'
 import Nav from '../../../components/navbar'
-function Simpson()
+function Trapezoidal()
 {
     return (
         <div>
             <Nav />
             <div>
-                ซิม
+                แทรบ
             </div>
         </div>
     )
 }
-export default Simpson
+export default Trapezoidal

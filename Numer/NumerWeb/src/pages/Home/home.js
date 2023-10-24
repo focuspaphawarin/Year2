@@ -61,7 +61,7 @@ function Home() {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item href="/Trapezodal">Trapezoidal Rule</Dropdown.Item>
+                        <Dropdown.Item href="/Trapezoidal">Trapezoidal Rule</Dropdown.Item>
                         <Dropdown.Item href="/ComTrape">Composite Trapezoidal Rule</Dropdown.Item>
                         <Dropdown.Item href="/Simpson">Simpson Rule</Dropdown.Item>
                         <Dropdown.Item href="/ComSim">Composite Simpson Rule</Dropdown.Item>

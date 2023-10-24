@@ -18,6 +18,19 @@ import GuassJordan from './pages/Linear/Guass jordan/GuassJordan';
 import Inversion from './pages/Linear/Metrix inversion/Inversion';
 import Jacobi from './pages/Linear/Jacobi iteration methods/Jacobi';
 import Conjugate from './pages/Linear/Conjugate gradient methods/Conjugate';
+
+import Lagrange from './pages/Interpolation/Lagrange interpolation/Lagrange';
+import NewtonDi from './pages/Interpolation/Newton divided differences/NewtonDi';
+import Spline from './pages/Interpolation/Spline interpolation/Spline';
+
+import Mutiple from './pages/Extrapolation/Multiple/Multiple';
+import Simple from './pages/Extrapolation/Simple/Simple';
+
+import Trapezodal from './pages/Integration/Trapezoidal rule/Trapezoidal';
+import ComTrape from './pages/Integration/Composite trapezoidal/ComTrape';
+import Simpson from './pages/Integration/Simpson/Simpson';
+import ComSim from './pages/Integration/Composite simpson/ComSim';
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -27,6 +40,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <App/>,
   },
+  /* ROOT */
   {
     path: "Graphical",
     element: <Graphical/>,
@@ -51,6 +65,7 @@ const router = createBrowserRouter([
     path: "Secant",
     element: <Secant/>,
   },
+  /* Linear*/
   {
     path: "Cramer",
     element: <Cramer/>,
@@ -74,6 +89,45 @@ const router = createBrowserRouter([
   {
     path: "Conjugate",
     element: <Conjugate/>,
+  },
+  /* Interpolation */
+  {
+    path: "Lagrange",
+    element: <Lagrange/>,
+  },
+  {
+    path: "NewtonDi",
+    element: <NewtonDi/>,
+  },
+  {
+    path: "Spline",
+    element: <Spline/>,
+  },
+  /* extra */
+  {
+    path: "Multiple",
+    element: <Mutiple/>,
+  },
+  {
+    path: "Simple",
+    element: <Simple/>,
+  },
+  /* integration */
+  {
+    path: "Trapezodal",
+    element: <Trapezodal/>,
+  },
+  {
+    path: "ComTrape",
+    element: <ComTrape/>,
+  },
+  {
+    path: "Simpson",
+    element: <Simpson/>,
+  },
+  {
+    path: "ComSim",
+    element: <ComSim/>,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
