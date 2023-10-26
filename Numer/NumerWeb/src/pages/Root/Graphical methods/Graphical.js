@@ -97,7 +97,7 @@ function Graphical()
     const [Fx,setFx] = useState();
     const [Xl,setXl] = useState(0);
     const [Xr,setXr] = useState(0);
-    const [X,setX] = useState(0);
+    const [X,setX] = useState(null);
     const [Error,setError] = useState(0.0001);
 
     const inputFx = (event) => {setFx(event.target.value)}
