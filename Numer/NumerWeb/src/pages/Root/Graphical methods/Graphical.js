@@ -5,70 +5,105 @@ import './Graphical.css'
 import { evaluate } from 'mathjs'
 function Graphical() 
 {
+    const print = () => 
+    {
+        console.log(data)
+        return(
+            <table>
+                <thead>
+                    <tr>
+                        <th>Iteration</th>
+                        <th>Xi</th>
+                        <th>F(xi)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map((item, index) => 
+                    (
+                        <tr>
+                            <td>{item.iteration}</td>
+                            <td>{item.Xi}</td>
+                            <td>{item.Fxi}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        )
+    }
     const CalGraphical = (xl,xr,error) =>
     {
-        var scope,nextfxl;
+        var Fxl = 0 ,NextFxl = 0,iter = 0,scope;
+        var obj = {};
         scope = 
         {
-            x:i
+            x:xl
         }
-        fxl = evaluate(Fx,scope)
-        fxl++;
-        for(let i=1;i<xr;i++)
+        NextFxl = evaluate(Fx,scope)
+        for(let i=xl+1;i<=xr;i++)
         {
-            scope = 
+            if(Fxl*NextFxl >= 0)
             {
-                x:i
+                Fxl = NextFxl
+                scope = 
+                {
+                    x:i
+                }
+                NextFxl = evaluate(Fx,scope)
+                obj = 
+                {
+                    iteration:iter,
+                    Xi:i,
+                    Fxi:NextFxl,
+                }
+                iter++
+                data.push(obj)
             }
-            nextfxl = evaluate(Fx,scope)
-            if(fxl*nextfxl>=0)
+            else
             {
-                fxl = nextfxl;
+                xl = i-2
+                xr = i-1
+                break;
             }
-            xr = i
         }
-        // var x, y, z;
-        // var a; 
-        // var r[100];
-        // for (let i = xl; i <= xr; i++)
-        // {
-        //     r[i] = 43 * i - 180;
-        // }
-
-        // for (int i = 0; i < 10; i++)
-        // {
-        //     if (r[i] * r[i + 1] < 0)
-        //     {
-        //         y = i;
-        //         z = i + 1;
-        //         break;
-        //     }
-        // }
-        // x = y;
-        // while (y <= x && x <= z)
-        // {
-        //     x = x + 0.000001;
-        //     a = 43 * x - 180;
-        //     if (abs(a) < 0.0001)
-        //     {
-        //         cout << x;
-        //         break;
-
-        //     }
-        // }
-        // cout << y <<endl<< z;
-        // 4.18605
-
+        let count = 0
+        if(xl<=xr)
+        {
+            do
+            { 
+                xl += 0.000001
+                scope = 
+                {
+                    x:xl
+                }
+                Fxl = evaluate(Fx,scope)
+                count++
+            }
+            while(Math.abs(Fxl)>error)
+            obj = 
+            {
+                iteration:iter,
+                Xi:xl,
+                Fxi:NextFxl,
+            }
+            iter++
+            data.push(obj)
+        }
+        setX(xl.toPrecision(6))
+        console.log("X = ",xl)
     }
+
+    const data = [] ;
+    const [html,setHtml] = useState(null);
     const [Fx,setFx] = useState();
     const [Xl,setXl] = useState(0);
     const [Xr,setXr] = useState(0);
+    const [X,setX] = useState(0);
     const [Error,setError] = useState(0.0001);
 
     const inputFx = (event) => {setFx(event.target.value)}
     const inputXl = (event) => {setXl(event.target.value)}
     const inputXr = (event) => {setXr(event.target.value)}
-    const inputError = (event) => {setError(event.target.value)}
+    const checkError = (event) => {setError(event.target.value)}
 
     const calculate = () =>
     {
@@ -76,37 +111,14 @@ function Graphical()
         const xr = parseFloat(Xr);
         const error = parseFloat(Error);
         CalGraphical(xl,xr,error);
+        setHtml(print());
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     return (
         <div className='body'>
             <Nav />
+            <div className='Graphical'>
+                <h2>Graphical methods</h2>
+            </div>
             <div >
                 <Container>
                     <Form>
@@ -143,8 +155,9 @@ function Graphical()
                             </button>
                         </div>
                         <br></br>
-                        <h5>ANSWER = </h5>
+                        <h5>ANSWER = {X}</h5>
                     </Form>
+                    {html}
                 </Container>
             </div>
         </div>

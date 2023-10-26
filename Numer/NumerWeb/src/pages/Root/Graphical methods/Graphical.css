@@ -2,6 +2,15 @@
 {
     background-color: beige;
 }
+.Graphical
+{
+    color: rgb(62, 103, 103);
+    font-weight: bold;
+    margin-top: 2%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
 .input
 {
     background-color: white;
@@ -51,11 +60,23 @@
 }
 .bt
 {
-        display:flex;
+    display:flex;
     justify-content:center;
     align-items: center;
+    margin-bottom: 2%;
 }
 button
 {
     background-color:rgb(255, 255, 255);
+}
+table
+{
+    margin-top: 2%;
+    
+}
+td, th 
+{
+    border: 2px solid rgb(62, 103, 103);
+    text-align: center;
+    padding: 8px;
 }

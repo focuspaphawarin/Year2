@@ -5,7 +5,7 @@ function Nav() {
             <div className='container'>
                 <div className='Topic'>
                     <a href="/" className='Atag'>
-                        <h2 className="topic">NUMERICAL WEB</h2>
+                        <h2 className="topic">NUMERICAL WEBSITE</h2>
                     </a>
                 </div>
                 <div className='Name'>

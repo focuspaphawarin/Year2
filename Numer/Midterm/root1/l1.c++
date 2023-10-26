@@ -10,6 +10,7 @@ int main()
     for (int i = 0; i <= 10; i++)
     {
         r[i] = 43 * i - 180;
+        cout<<i<<") "<<r[i]<<endl;
     }
 
     for (int i = 0; i < 10; i++)
