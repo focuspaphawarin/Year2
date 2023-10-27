@@ -16,6 +16,7 @@ function FalsePosition()
                         <th>XL</th>
                         <th>X1</th>
                         <th>XR</th>
+                        <th>%ERROR</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +27,7 @@ function FalsePosition()
                             <td>{item.Xl}</td>
                             <td>{item.Xm}</td>
                             <td>{item.Xr}</td>
+                            <td>{item.EA}%</td>
                         </tr>
                     ))}
                 </tbody>
@@ -66,7 +68,8 @@ function FalsePosition()
                     iteration:iter,
                     Xl:xl,
                     Xm:xm,
-                    Xr:xr
+                    Xr:xr,
+                    EA:ea.toFixed(6)
                 }
                 data.push(obj)
                 xr = xm;
@@ -78,7 +81,8 @@ function FalsePosition()
                     iteration:iter,
                     Xl:xl,
                     Xm:xm,
-                    Xr:xr
+                    Xr:xr,
+                    EA:ea.toFixed(6)
                 }
                 data.push(obj)
                 xl = xm;
@@ -113,7 +117,7 @@ function FalsePosition()
         <div className='body'>
             <Nav />
             <div className= 'FalsePosition'>
-                <h2>FalsePosition serch</h2>
+                <h2>False Position method</h2>
             </div>
             <div >
                 <Container>

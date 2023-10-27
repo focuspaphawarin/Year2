@@ -1,0 +1,73 @@
+.OnePoint
+{
+    color: rgb(62, 103, 103);
+    font-weight: bold;
+    margin-top: 2%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.input
+{
+    background-color: white;
+    margin: 5%;
+    text-align: center;
+    border: 2px solid rgb(62, 103, 103);
+    border-radius: 25px;
+}
+.textinp
+{
+    margin: 2%;
+    font-weight: bold;
+}
+.fx
+{
+    margin-bottom: 2%;
+}
+#inpfx
+{
+    margin-left: 5px;
+    width: 50%;
+    
+}
+.x
+{
+    margin-bottom: 2%;
+}
+#inpx0
+{
+    margin-left: 5px;
+    margin-right: 10px;
+    width: 50%;
+}
+.err
+{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#checkerr
+{
+    margin-top: 1%;
+}
+.bt
+{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    margin-bottom: 2%;
+}
+button
+{
+    background-color:rgb(255, 255, 255);
+}
+table
+{
+    margin-top: 2%;
+    
+}
+td, th 
+{
+    border: 2px solid rgb(62, 103, 103);
+    text-align: center;
+    padding: 8px;
+}

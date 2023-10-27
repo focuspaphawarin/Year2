@@ -16,6 +16,7 @@ function Bisection()
                         <th>XL</th>
                         <th>XM</th>
                         <th>XR</th>
+                        <th>%ERROR</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +27,7 @@ function Bisection()
                             <td>{item.Xl}</td>
                             <td>{item.Xm}</td>
                             <td>{item.Xr}</td>
+                            <td>{item.EA}%</td>
                         </tr>
                     ))}
                 </tbody>
@@ -62,7 +64,8 @@ function Bisection()
                     iteration:iter,
                     Xl:xl,
                     Xm:xm,
-                    Xr:xr
+                    Xr:xr,
+                    EA:ea.toFixed(6)
                 }
                 data.push(obj)
                 xr = xm;
@@ -74,7 +77,8 @@ function Bisection()
                     iteration:iter,
                     Xl:xl,
                     Xm:xm,
-                    Xr:xr
+                    Xr:xr,
+                    EA:ea.toFixed(6)
                 }
                 data.push(obj)
                 xl = xm;
@@ -109,7 +113,7 @@ function Bisection()
         <div className='body'>
             <Nav />
             <div className= 'Bisection'>
-                <h2>Bisection serch</h2>
+                <h2>Bisection search</h2>
             </div>
             <div >
                 <Container>
