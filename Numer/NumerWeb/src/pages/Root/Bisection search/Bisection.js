@@ -1,63 +1,45 @@
-// import React from 'react'
-// import Nav from '../../../components/navbar'
-// function Bisection() {
-//     return (
-//         <div>
-//             <Nav />
-//             <div>
-//                 ใบ
-//             </div>
-//         </div>
-//     )
-// }
-// export default Bisection
-import { useState } from "react"
-import { Button, Container, Form, Table } from "react-bootstrap";
+import React, { useState } from 'react'
+import Nav from '../../../components/navbar'
+import { Container, Form } from 'react-bootstrap'
+import './Bisection.css'
 import { evaluate } from 'mathjs'
-
-// component sample
-const Sample =()=>{
-    const print = () =>{
+function Bisection() 
+{
+    const print = () => 
+    {
         console.log(data)
-        setValueIter(data.map((x)=>x.iteration));
-        setValueXl(data.map((x)=>x.Xl));
-        setValueXm(data.map((x)=>x.Xm));
-        setValueXr(data.map((x)=>x.Xr));
         return(
-            <Container>
-                <Table striped bordered hover variant="dark">
-                    <thead>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Iteration</th>
+                        <th>XL</th>
+                        <th>XM</th>
+                        <th>XR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map((item, index) => 
+                    (
                         <tr>
-                            <th width="10%">Iteration</th>
-                            <th width="30%">XL</th>
-                            <th width="30%">XM</th>
-                            <th width="30%">XR</th>
+                            <td>{item.iteration}</td>
+                            <td>{item.Xl}</td>
+                            <td>{item.Xm}</td>
+                            <td>{item.Xr}</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {data.map((element, index)=>{
-                            return  (
-                            <tr key={index}>
-                                <td>{element.iteration}</td>
-                                <td>{element.Xl}</td>
-                                <td>{element.Xm}</td>
-                                <td>{element.Xr}</td>
-                            </tr>)
-                        })}
-                    </tbody>
-                </Table>
-            </Container>
-           
-        );
+                    ))}
+                </tbody>
+            </table>
+        )
     }
 
     const error =(xold, xnew)=> Math.abs((xnew-xold)/xnew)*100;
-   
-    const Calbisection = (xl, xr) => {
+
+    const CalBisection = (xl,xr,err) => 
+    {
         var xm,fXm,fXr,ea,scope;
         var iter = 0;
         var MAX = 50;
-        const e = 0.00001;
         var obj={};
         do
         {
@@ -65,12 +47,12 @@ const Sample =()=>{
             scope = {
                 x:xr,
             }
-            fXr = evaluate(Equation, scope)
+            fXr = evaluate(Fx, scope)
 
             scope = {
                 x:xm,
             }
-            fXm = evaluate(Equation, scope)
+            fXm = evaluate(Fx, scope)
 
             iter ++;
             if (fXm*fXr > 0)
@@ -97,73 +79,80 @@ const Sample =()=>{
                 data.push(obj)
                 xl = xm;
             }
-        }while(ea>e && iter<MAX)
-        setX(xm)
+        }while(ea>err && iter<MAX)
+        setX(xm.toFixed(6))
     }
 
-    const data =[];
-    const [valueIter, setValueIter] = useState([]);
-    const [valueXl, setValueXl] = useState([]);
-    const [valueXm, setValueXm] = useState([]);
-    const [valueXr, setValueXr] = useState([]);
-     
-   
-    const [html, setHtml] = useState(null);
-    const [Equation,setEquation] = useState("(x^4)-13")
-    const [X,setX] = useState(0)
-    const [XL,setXL] = useState(0)
-    const [XR,setXR] = useState(0)
 
-    const inputEquation = (event) =>{
-        console.log(event.target.value)
-        setEquation(event.target.value)
-    }
+    const data = [] ;
+    const [html,setHtml] = useState(null);
+    const [Fx,setFx] = useState();
+    const [Xl,setXl] = useState(0);
+    const [Xr,setXr] = useState(0);
+    const [X,setX] = useState(null);
+    const [Error,setError] = useState(0.00001);
 
-    const inputXL = (event) =>{
-        console.log(event.target.value)
-        setXL(event.target.value)
-    }
+    const inputFx = (event) => {setFx(event.target.value)}
+    const inputXl = (event) => {setXl(event.target.value)}
+    const inputXr = (event) => {setXr(event.target.value)}
+    const checkError = (event) => {setError(event.target.value)}
 
-    const inputXR = (event) =>{
-        console.log(event.target.value)
-        setXR(event.target.value)
-    }
-    //หาราก
-    const calculateRoot = () =>{
-        const xlnum = parseFloat(XL)
-        const xrnum = parseFloat(XR)
-        Calbisection(xlnum,xrnum);
-     
+    const calculate = () =>
+    {
+        const xl = parseFloat(Xl);
+        const xr = parseFloat(Xr);
+        const error = parseFloat(Error);
+        CalBisection(xl,xr,error);
         setHtml(print());
-           
-        console.log(valueIter)
-        console.log(valueXl)
     }
-
     return (
-            <Container>
-                <Form >
-                    <Form.Group className="mb-3">
-                    <Form.Label>Input f(x)</Form.Label>
-                        <input type="text" id="equation" value={Equation} onChange={inputEquation} style={{width:"20%", margin:"0 auto"}} className="form-control"></input>
-                        <Form.Label>Input XL</Form.Label>
-                        <input type="number" id="XL" onChange={inputXL} style={{width:"20%", margin:"0 auto"}} className="form-control"></input>
-                        <Form.Label>Input XR</Form.Label>
-                        <input type="number" id="XR" onChange={inputXR} style={{width:"20%", margin:"0 auto"}} className="form-control"></input>
-                    </Form.Group>
-                    <Button variant="dark" onClick={calculateRoot}>
-                        Calculate
-                    </Button>
-                </Form>
-                <br></br>
-                <h5>Answer = {X.toPrecision(7)}</h5>
+        <div className='body'>
+            <Nav />
+            <div className= 'Bisection'>
+                <h2>Bisection serch</h2>
+            </div>
+            <div >
                 <Container>
-                {html}
+                    <Form>
+                        <div className='input'>
+                            <div className='textinp'>
+                                <label>INPUT</label>
+                            </div>
+                            <div className='fx'>
+                                <label for="labfx">
+                                    F(x) :
+                                </label> 
+                                <input type="text" id="inpfx" onChange={inputFx}/>
+                            </div>
+                            <div className='x'>
+                                <label for="labxl">
+                                    XL :
+                                </label> 
+                                <input type="text" id="inpxl" onChange={inputXl}/>
+                                <label for="labxr">
+                                    XR :
+                                </label> 
+                                <input type="text" id="inpxr" onChange={inputXr}/>
+                            </div>
+                            <div className='err'>
+                                <label for="err">
+                                    CHECK ERROR 
+                                </label> <br/>
+                                <input type="text" id="checkerr" onChange={checkError}/>
+                            </div>
+                        </div>
+                        <div className='bt'>
+                            <button type='button'onClick={calculate}>
+                                CALCULATE
+                            </button>
+                        </div>
+                        <br></br>
+                        <h5>ANSWER = {X}</h5>
+                    </Form>
+                    {html}
                 </Container>
-               
-            </Container>
-           
+            </div>
+        </div>
     )
 }
-
-export default Sample
+export default Bisection
