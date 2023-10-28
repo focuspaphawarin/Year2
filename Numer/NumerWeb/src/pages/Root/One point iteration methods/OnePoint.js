@@ -85,7 +85,7 @@ function OnePoint() {
     return (
         <div className='body'>
             <Nav />
-            <div className='Graphical'>
+            <div className='OnePoint'>
                 <h2>One Point Iteration methods</h2>
             </div>
             <div >
