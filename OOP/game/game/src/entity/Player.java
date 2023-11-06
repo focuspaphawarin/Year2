@@ -3,6 +3,7 @@ package entity;
 import main.GamePanel;
 import main.KeyHandler;
 
+import entity.Entity;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -13,19 +14,26 @@ public class Player extends Entity
     GamePanel gp;
     KeyHandler keyH;
 
+
     public Player(GamePanel gp,KeyHandler keyH)
     {
         this.gp = gp;
         this.keyH = keyH;
+
+        solidArea = new Rectangle();
+        solidArea.x = 10*2;
+        solidArea.y = 36*2;
+        solidArea.width = 10*2;
+        solidArea.height = 10*2;
         setDefaultValues();
         getPlayerImage();
     }
     public void setDefaultValues()
     {
-        x = 100;
-        y = 100;
+        x = 550;
+        y = 450;
         speed = 5;
-        direction = "down";
+        direction = "up";
     }
     public void getPlayerImage()
     {
@@ -48,19 +56,39 @@ public class Player extends Entity
             if (keyH.upPressed == true)
             {
                 direction = "up";
-                y -= speed;
             } else if (keyH.downPressed == true)
             {
                 direction = "down";
-                y += speed;
             } else if (keyH.leftPressed == true)
             {
                 direction = "left";
-                x -= speed;
             } else if (keyH.rightPressed == true)
             {
                 direction = "right";
-                x += speed;
+            }
+
+            //check tile collision
+            collisionOn = false;
+            gp.cChecker.checkTile(this);
+
+            //if collision is false , player can move
+            if(collisionOn == false)
+            {
+                switch (direction)
+                {
+                    case "up":
+                        y -= speed;
+                        break;
+                    case "down":
+                        y += speed;
+                        break;
+                    case "left":
+                        x -= speed;
+                        break;
+                    case "right":
+                        x += speed;
+                        break;
+                }
             }
             spriteCounter++;
             if(spriteCounter > 10)

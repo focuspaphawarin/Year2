@@ -12,8 +12,8 @@ import java.io.InputStreamReader;
 public class TileManager
 {
     GamePanel gp;
-    Tile[] tile;
-    int mapTileNumber[][];
+    public Tile[] tile;
+    public int mapTileNumber[][];
 
     public TileManager(GamePanel gp)
     {
@@ -21,6 +21,7 @@ public class TileManager
         tile = new Tile[10];
         mapTileNumber = new int[gp.maxScreeCol][gp.maxScreenRow];
         getTileImage();
+        loadMap();
     }
     public void getTileImage()
     {
@@ -30,7 +31,8 @@ public class TileManager
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/trans.png"));
 
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/block.jpg"));
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/trans.png")); //block.jpg
+            tile[1].collision = true;
 
         }catch (IOException e)
         {
@@ -51,7 +53,21 @@ public class TileManager
             while(col<gp.maxScreeCol && row< gp.maxScreenRow)
             {
                 String line = br.readLine();
+
+                while(col<gp.maxScreeCol)
+                {
+                    String numbers[] = line.split(" ");
+                    int num = Integer.parseInt(numbers[col]);
+                    mapTileNumber[col][row] = num;
+                    col++;
+                }
+                if(col == gp.maxScreeCol)
+                {
+                    col = 0;
+                    row++;
+                }
             }
+            br.close();
         }catch (Exception e)
         {
 
@@ -66,7 +82,8 @@ public class TileManager
         int y = 0;
         while (col<gp.maxScreeCol && row<gp.maxScreenRow)
         {
-            g2.drawImage(tile[0].image,x,y,gp.tileSize,gp.tileSize,null);
+            int tileNum = mapTileNumber[col][row];
+            g2.drawImage(tile[tileNum].image,x,y,gp.tileSize,gp.tileSize,null);
             col++;
             x += gp.tileSize;
             if(col == gp.maxScreeCol)
