@@ -18,15 +18,18 @@ public:
 	BST* Search(BST*, int);
 	BST* Delete(BST*, int);
 
-	int getData() const {
+	int getData() const 
+	{
 		return data;
 	}
 
-	BST* getLeft() const {
+	BST* getLeft() const 
+	{
 		return left;
 	}
 
-	BST* getRight() const {
+	BST* getRight() const 
+	{
 		return right;
 	}
 
@@ -159,7 +162,7 @@ BST* BST::Delete(BST* root, int k)
 	BST* succ = root->right;
 	while (succ->left != NULL) {
 		succParent = succ;
-		succ = succ->left;
+		succ = succ->left; 
 	}
 
 	if (succParent != root)
