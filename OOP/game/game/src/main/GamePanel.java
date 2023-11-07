@@ -2,6 +2,7 @@ package main;
 
 import Tile.Tile;
 import entity.Player;
+import Object.SuperObj;
 
 import javax.imageio.ImageIO;
 
@@ -29,7 +30,9 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
-    Player player = new Player(this,keyH);
+    public AssetSetter aSetter = new AssetSetter(this);
+    public Player player = new Player(this,keyH);
+    public SuperObj obj[] = new SuperObj[10];
 
 //    int playerX = 100;
 //    int playerY = 100;
@@ -42,12 +45,19 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
-
-        try {
+        //background
+        try
+        {
             backgroundImage = ImageIO.read(getClass().getResource("/res/background/bgGame.png"));
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
+    }
+
+    public void setupGame()
+    {
+        aSetter.setObject();
     }
 
     public void startGameThread() {
@@ -126,8 +136,21 @@ public class GamePanel extends JPanel implements Runnable {
         {
             g2.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight, this);
         }
+        //tile
         tileM.draw(g2);
+
+        //object
+        for(int i=0; i<obj.length;i++)
+        {
+            if(obj[i] != null)
+            {
+                obj[i].draw(g2,this);
+            }
+        }
+
+        //player
         player.draw(g2);
+
         g2.dispose();
     }
 }

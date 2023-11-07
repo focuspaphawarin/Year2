@@ -14,11 +14,17 @@ public class Player extends Entity
     GamePanel gp;
     KeyHandler keyH;
 
+//    public final int screenX;
+//    public final int screenY;
+
 
     public Player(GamePanel gp,KeyHandler keyH)
     {
         this.gp = gp;
         this.keyH = keyH;
+
+//        screenX = gp.screenWidth/2 -(gp.tileSize/2);
+//        screenY = gp.screenHeight/2 -(gp.tileSize/2);
 
         solidArea = new Rectangle();
         solidArea.x = 10*2;
@@ -30,8 +36,8 @@ public class Player extends Entity
     }
     public void setDefaultValues()
     {
-        x = 550;
-        y = 450;
+        x = 550;//550  250-800
+        y = 400;//450  450-600
         speed = 5;
         direction = "up";
     }
