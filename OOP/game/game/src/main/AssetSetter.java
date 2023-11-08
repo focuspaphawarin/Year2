@@ -3,7 +3,7 @@ package main;
 import Object.Candy;
 import Object.CandyCane;
 import Object.Gift;
-import Object.Point;
+import Object.CarPoint;
 
 import java.util.Random;
 
@@ -44,10 +44,10 @@ public class AssetSetter
         gp.obj[5] = new Gift(random.nextInt(3 - 1 + 1) + 1);
         gp.obj[5].x = random.nextInt(820 - 300) + 300;
         gp.obj[5].y = random.nextInt(650 - 550) + 550;
-//
-//        //point
-//        gp.obj[6] = new Point();
-//        gp.obj[6].x = 550 * gp.tileSize;
-//        gp.obj[6].y = 200 * gp.tileSize;
+
+        //point
+        gp.obj[6] = new CarPoint();
+        gp.obj[6].x = 500;
+        gp.obj[6].y = 10;
     }
 }

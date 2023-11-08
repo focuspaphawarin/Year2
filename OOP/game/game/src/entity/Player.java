@@ -13,6 +13,8 @@ public class Player extends Entity
 {
     GamePanel gp;
     KeyHandler keyH;
+    int hasPoint = 0;
+    int sumPoint = 0;
 
 //    public final int screenX;
 //    public final int screenY;
@@ -29,6 +31,8 @@ public class Player extends Entity
         solidArea = new Rectangle();
         solidArea.x = 10*2;
         solidArea.y = 36*2;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
         solidArea.width = 10*2;
         solidArea.height = 10*2;
         setDefaultValues();
@@ -77,6 +81,10 @@ public class Player extends Entity
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
+            //check obj collision
+            int objIndex = gp.cChecker.checkObject(this,true);
+            pickUpObj(objIndex);
+
             //if collision is false , player can move
             if(collisionOn == false)
             {
@@ -108,6 +116,64 @@ public class Player extends Entity
                 }
                 spriteCounter = 0;
             }
+        }
+    }
+    public void pickUpObj(int i)
+    {
+        if (i != 999)
+        {
+            String objectName = gp.obj[i].name;
+
+            switch (objectName)
+            {
+                case "Candy1":
+                    hasPoint = 1;
+                    gp.obj[i] = null;
+                    System.out.println("Point : "+hasPoint);
+                    break;
+                case "Candy2":
+                    hasPoint = 1;
+                    gp.obj[i] = null;
+                    System.out.println("Point : "+hasPoint);
+                    break;
+                case "Candy3":
+                    hasPoint = 1;
+                    gp.obj[i] = null;
+                    System.out.println("Point : "+hasPoint);
+                    break;
+                case "Cane1":
+                    hasPoint = 2;
+                    gp.obj[i] = null;
+                    System.out.println("Point : "+hasPoint);
+                    break;
+                case "Cane2":
+                    hasPoint = 2;
+                    gp.obj[i] = null;
+                    System.out.println("Point : "+hasPoint);
+                    break;
+                case "Cane3":
+                    hasPoint = 2;
+                    gp.obj[i] = null;
+                    System.out.println("Point : "+hasPoint);
+                    break;
+                case "Gift1":
+                    hasPoint = 5;
+                    gp.obj[i] = null;
+                    System.out.println("Point : "+hasPoint);
+                    break;
+                case "Gift2":
+                    hasPoint = 5;
+                    gp.obj[i] = null;
+                    System.out.println("Point : "+hasPoint);
+                case "Reindeer":
+                    if(hasPoint > 0)
+                    {
+                        sumPoint += hasPoint;
+                        hasPoint = 0;
+                        System.out.println("Score : "+sumPoint);
+                    }
+            }
+
         }
     }
     public  void draw(Graphics2D g2)

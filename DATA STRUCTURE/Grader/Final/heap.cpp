@@ -113,7 +113,7 @@ class MinHeap
         }
         void InsertMinHeap(int index)
         {
-           int parent = index/2; //ตน
+           int parent = index/2; 
            if(index<=1)
            {
             return;

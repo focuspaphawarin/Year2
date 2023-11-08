@@ -1,11 +1,14 @@
 package Object;
 
+import main.GamePanel;
+
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.IOException;
 
-public class Point extends SuperObj
+public class CarPoint extends SuperObj
 {
-    public void Point()
+    public CarPoint()
     {
         name = "Reindeer";
         try
@@ -15,5 +18,12 @@ public class Point extends SuperObj
         {
             e.printStackTrace();
         }
+        collision = true;
+    }
+
+    @Override
+    public void draw(Graphics2D g2, GamePanel gp)
+    {
+        g2.drawImage(image,x,y,290,180,null);
     }
 }

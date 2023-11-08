@@ -46,12 +46,13 @@ function Bisection()
         do
         {
             xm = (xl+xr)/2.0;
-            scope = {
+            scope = 
+            {
                 x:xr,
             }
             fXr = evaluate(Fx, scope)
-
-            scope = {
+            scope = 
+            {
                 x:xm,
             }
             fXm = evaluate(Fx, scope)
@@ -73,7 +74,8 @@ function Bisection()
             else if (fXm*fXr < 0)
             {
                 ea = error(xl, xm);
-                obj = {
+                obj = 
+                {
                     iteration:iter,
                     Xl:xl,
                     Xm:xm,
@@ -86,7 +88,6 @@ function Bisection()
         }while(ea>err && iter<MAX)
         setX(xm.toFixed(6))
     }
-
 
     const data = [] ;
     const [html,setHtml] = useState(null);

@@ -2,7 +2,8 @@
 #include<queue>
 using namespace std;
 
-class BST {
+class BST 
+{
 	int data;
 	BST *left, *right;
 
