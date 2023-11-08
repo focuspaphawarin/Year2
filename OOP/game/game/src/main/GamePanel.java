@@ -26,15 +26,18 @@ public class GamePanel extends JPanel implements Runnable {
     //FPS
     int FPS = 60;
 
+    //system
     TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
+    public UI ui =  new UI(this);
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this,keyH);
     public SuperObj obj[] = new SuperObj[10];
 
-//    int playerX = 100;
+
+    //    int playerX = 100;
 //    int playerY = 100;
 //    int playerSpeed = 4;
     public Image backgroundImage;
@@ -92,7 +95,7 @@ public class GamePanel extends JPanel implements Runnable {
 
             if(timer>=1000000000)
             {
-                System.out.println("FPS : "+drawCount);
+//                System.out.println("FPS : "+drawCount);
                 drawCount = 0;
                 timer = 0;
             }
@@ -150,6 +153,9 @@ public class GamePanel extends JPanel implements Runnable {
 
         //player
         player.draw(g2);
+
+        ui.paintComponent(g);
+        ui.draw(g2);
 
         g2.dispose();
     }

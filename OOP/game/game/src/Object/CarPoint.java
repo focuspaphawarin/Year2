@@ -19,6 +19,10 @@ public class CarPoint extends SuperObj
             e.printStackTrace();
         }
         collision = true;
+        solidArea.x = 500;
+        solidArea.y = 10;
+        solidArea.width = 290;
+        solidArea.height = 180;
     }
 
     @Override

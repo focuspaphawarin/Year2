@@ -13,8 +13,9 @@ public class Player extends Entity
 {
     GamePanel gp;
     KeyHandler keyH;
-    int hasPoint = 0;
-    int sumPoint = 0;
+    public int hasPoint = 0;
+    public int sumPoint = 0;
+
 
 //    public final int screenX;
 //    public final int screenY;
@@ -127,53 +128,51 @@ public class Player extends Entity
             switch (objectName)
             {
                 case "Candy1":
-                    hasPoint = 1;
+                    hasPoint++;
                     gp.obj[i] = null;
-                    System.out.println("Point : "+hasPoint);
+                    System.out.println("Point : " + hasPoint);
                     break;
                 case "Candy2":
-                    hasPoint = 1;
+                    hasPoint++;
                     gp.obj[i] = null;
-                    System.out.println("Point : "+hasPoint);
+                    System.out.println("Point : " + hasPoint);
                     break;
                 case "Candy3":
-                    hasPoint = 1;
+                    hasPoint++;
                     gp.obj[i] = null;
-                    System.out.println("Point : "+hasPoint);
+                    System.out.println("Point : " + hasPoint);
                     break;
                 case "Cane1":
-                    hasPoint = 2;
+                    hasPoint+=2;
                     gp.obj[i] = null;
-                    System.out.println("Point : "+hasPoint);
+                    System.out.println("Point : " + hasPoint);
                     break;
                 case "Cane2":
-                    hasPoint = 2;
+                    hasPoint+=2;
                     gp.obj[i] = null;
-                    System.out.println("Point : "+hasPoint);
+                    System.out.println("Point : " + hasPoint);
                     break;
                 case "Cane3":
-                    hasPoint = 2;
+                    hasPoint+=2;
                     gp.obj[i] = null;
-                    System.out.println("Point : "+hasPoint);
+                    System.out.println("Point : " + hasPoint);
                     break;
                 case "Gift1":
-                    hasPoint = 5;
+                    hasPoint+=5;
                     gp.obj[i] = null;
-                    System.out.println("Point : "+hasPoint);
+                    System.out.println("Point : " + hasPoint);
                     break;
                 case "Gift2":
-                    hasPoint = 5;
+                    hasPoint+=5;
                     gp.obj[i] = null;
-                    System.out.println("Point : "+hasPoint);
+                    System.out.println("Point : " + hasPoint);
+                    break;
                 case "Reindeer":
-                    if(hasPoint > 0)
-                    {
-                        sumPoint += hasPoint;
-                        hasPoint = 0;
-                        System.out.println("Score : "+sumPoint);
-                    }
+                    sumPoint += hasPoint;
+                    hasPoint = 0;
+                    System.out.println("Score : " + sumPoint);
+                    break;
             }
-
         }
     }
     public  void draw(Graphics2D g2)
