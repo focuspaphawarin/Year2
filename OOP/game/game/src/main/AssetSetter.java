@@ -1,9 +1,6 @@
 package main;
 
-import Object.Candy;
-import Object.CandyCane;
-import Object.Gift;
-import Object.CarPoint;
+import Object.*;
 
 import java.util.Random;
 
@@ -11,6 +8,10 @@ public class AssetSetter
 {
     GamePanel gp;
     Random random = new Random();
+
+    public int xGhost = 16;
+    public int xGhost1 = 16;
+    public int xGhostReverse = 1300;
     public AssetSetter(GamePanel gp)
     {
         this.gp = gp;
@@ -49,5 +50,51 @@ public class AssetSetter
         gp.obj[6] = new CarPoint();
         gp.obj[6].x = 500;
         gp.obj[6].y = 10;
+    }
+
+    public void setGhost() {
+//        gp.ghost[0] = new Ghost(2);
+//        gp.ghost[0].name = "GhostL"; // Set the name for the first ghost
+//        gp.ghost[0].x = random.nextInt(1000 - 300 ) + 300;
+//        gp.ghost[0].y = gp.tileSize * 3;
+//
+//        gp.ghost[1] = new Ghost(1);
+//        gp.ghost[1].name = "GhostR"; // Set the name for the second ghost
+//        gp.ghost[1].x = random.nextInt(1300 - 20 ) + 20;
+//        gp.ghost[1].y = gp.tileSize * 4;
+//
+//        gp.ghost[2] = new Ghost(2);
+//        gp.ghost[2].name = "GhostL"; // Set the name for the third ghost
+//        gp.ghost[2].x = random.nextInt(1300 - 100 ) + 100;
+//        gp.ghost[2].y = gp.tileSize * 5;
+
+        gp.obj[7] = new Ghost(2);
+        gp.obj[7].name = "GhostL"; // Set the name for the first ghost
+        gp.obj[7].x = random.nextInt(1000 - 300 ) + 300;
+        gp.obj[7].y = gp.tileSize * 3;
+
+        gp.obj[8] = new Ghost(1);
+        gp.obj[8].name = "GhostR"; // Set the name for the second ghost
+        gp.obj[8].x = random.nextInt(1300 - 20 ) + 20;
+        gp.obj[8].y = gp.tileSize * 4;
+
+        gp.obj[9] = new Ghost(2);
+        gp.obj[9].name = "GhostL"; // Set the name for the third ghost
+        gp.obj[9].x = random.nextInt(1300 - 100 ) + 100;
+        gp.obj[9].y = gp.tileSize * 5;
+    }
+
+    public void updateGhost() {
+        for (int i = 0; i < gp.obj.length; i++) {
+            if (gp.obj[i] != null && gp.obj[i].getEntityType().equals("Ghost")) {
+                if (i == 7) {
+                    gp.obj[i].x = xGhost;
+                } else if (i == 8) {
+                    gp.obj[i].x = xGhostReverse;
+                } else if (i == 9) {
+                    gp.obj[i].x = xGhost1;
+                }
+            }
+        }
     }
 }

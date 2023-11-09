@@ -1,8 +1,10 @@
 package main;
 
 import Tile.Tile;
+import entity.Entity;
 import entity.Player;
 import Object.SuperObj;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -33,9 +35,12 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
+
+    //obj
     public Player player = new Player(this,keyH);
     public SuperObj obj[] = new SuperObj[10];
-
+    public SuperObj ghost[] = new SuperObj[10];
+    Random random = new Random();
 
     //    int playerX = 100;
 //    int playerY = 100;
@@ -61,6 +66,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame()
     {
         aSetter.setObject();
+        aSetter.setGhost();
     }
 
     public void startGameThread() {
@@ -126,10 +132,12 @@ public class GamePanel extends JPanel implements Runnable {
 //        }
 //    }
 
-    public void update()
-    {
+
+    public void update() {
         player.update();
+        aSetter.updateGhost(); // Update the ghost's position
     }
+
 
     public void paintComponent(Graphics g)
     {
@@ -145,10 +153,34 @@ public class GamePanel extends JPanel implements Runnable {
         //object
         for(int i=0; i<obj.length;i++)
         {
-            if(obj[i] != null)
+            if(obj[i] != null && obj[i].getEntityType().equals("Gift"))
             {
                 obj[i].draw(g2,this);
             }
+        }
+
+        //ghost
+        for(int i=0; i<obj.length;i++)
+        {
+            if(obj[i] != null && obj[i].getEntityType().equals("Ghost"))
+            {
+                obj[i].draw(g2,this);
+            }
+        }
+        if(aSetter.xGhost < 1300)
+        {
+            aSetter.xGhost = aSetter.xGhost + random.nextInt(10 - 1) + 1;
+            aSetter.xGhost1 = aSetter.xGhost1 + random.nextInt(10 - 1) + 1;
+        }
+        else{
+            aSetter.xGhost = 0;
+            aSetter.xGhost1 = 0;
+        }
+        if(aSetter.xGhostReverse > 0){
+            aSetter.xGhostReverse = aSetter.xGhostReverse - random.nextInt(10 - 1)+1;
+        }
+        else {
+            aSetter.xGhostReverse = 1300;
         }
 
         //player

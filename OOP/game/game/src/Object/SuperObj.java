@@ -15,6 +15,16 @@ public class SuperObj
     public int solidAreaDefaultX = 0;
     public int solidAreaDefaultY = 0;
 
+    public String entityType = "Gift";
+
+    public void setEntityType(String entityType) {
+        this.entityType = entityType;
+    }
+
+    public String getEntityType() {
+        return entityType;
+    }
+
     public void draw(Graphics2D g2, GamePanel gp)
     {
 //        int screenX = x - gp.player.x + gp.player.screenX;
