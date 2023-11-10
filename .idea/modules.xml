@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/OOP/IntelliJ/IntelliJ.iml" filepath="$PROJECT_DIR$/OOP/IntelliJ/IntelliJ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OOP/LAB/week2/Main/Main.iml" filepath="$PROJECT_DIR$/OOP/LAB/week2/Main/Main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OOP/OOP.iml" filepath="$PROJECT_DIR$/OOP/OOP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Year2.iml" filepath="$PROJECT_DIR$/Year2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OOP/game/game.iml" filepath="$PROJECT_DIR$/OOP/game/game.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OOP/LAB/week1/week1.iml" filepath="$PROJECT_DIR$/OOP/LAB/week1/week1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OOP/LAB/week2/week2.iml" filepath="$PROJECT_DIR$/OOP/LAB/week2/week2.iml" />
+    </modules>
+  </component>
+</project>

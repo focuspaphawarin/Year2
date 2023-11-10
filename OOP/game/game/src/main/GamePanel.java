@@ -42,9 +42,6 @@ public class GamePanel extends JPanel implements Runnable {
     public SuperObj ghost[] = new SuperObj[10];
     Random random = new Random();
 
-    //    int playerX = 100;
-//    int playerY = 100;
-//    int playerSpeed = 4;
     public Image backgroundImage;
 
     public GamePanel() {
@@ -105,40 +102,15 @@ public class GamePanel extends JPanel implements Runnable {
                 drawCount = 0;
                 timer = 0;
             }
+
         }
     }
-//    public void run() {
-//        double drawInterval = 1000000000 / FPS;
-//        double nextDrawTime = System.nanoTime() + drawInterval;
-//        while (gameThread != null) {
-//            long currentTime = System.nanoTime();
-//            System.out.println("current time =" + currentTime);
-//            update();
-//            repaint();
-//
-//            try {
-//                double remainingTime = nextDrawTime - System.nanoTime();
-//                remainingTime = remainingTime / 1000000;
-//
-//                if (remainingTime < 0) {
-//                    remainingTime = 0;
-//                }
-//                Thread.sleep((long) remainingTime);
-//                nextDrawTime += drawInterval;
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//                throw new RuntimeException(e);
-//            }
-//        }
-//    }
-
-
     public void update() {
         player.update();
         aSetter.updateGhost(); // Update the ghost's position
+
+
     }
-
-
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
@@ -158,7 +130,6 @@ public class GamePanel extends JPanel implements Runnable {
                 obj[i].draw(g2,this);
             }
         }
-
         //ghost
         for(int i=0; i<obj.length;i++)
         {
@@ -181,6 +152,12 @@ public class GamePanel extends JPanel implements Runnable {
         }
         else {
             aSetter.xGhostReverse = 1300;
+        }
+
+        if(player.hasCandy>=5)
+        {
+            aSetter.setObject();
+            player.hasCandy = 0;
         }
 
         //player

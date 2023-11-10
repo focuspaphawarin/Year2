@@ -14,19 +14,11 @@ public class Player extends Entity {
     KeyHandler keyH;
     public int hasPoint = 0;
     public int sumPoint = 0;
-
-
-//    public final int screenX;
-//    public final int screenY;
-
+    public int hasCandy = 0;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         super(gp);
         this.keyH = keyH;
-
-//        screenX = gp.screenWidth/2 -(gp.tileSize/2);
-//        screenY = gp.screenHeight/2 -(gp.tileSize/2);
-
         solidArea = new Rectangle();
         solidArea.x = 10 * 2;
         solidArea.y = 36 * 2;
@@ -39,8 +31,8 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-        x = 550;//550  250-800
-        y = 400;//450  450-600
+        x = 550;
+        y = 400;
         speed = 5;
         direction = "up";
     }
@@ -113,14 +105,17 @@ public class Player extends Entity {
 
             if ((objectName.equals("Candy1") || objectName.equals("Candy2") || objectName.equals("Candy3"))) {
                 hasPoint++;
+                hasCandy++;
                 gp.obj[i] = null;
                 gp.ui.showMessage("+ 1 Point !");
             } else if ((objectName.equals("Cane1") || objectName.equals("Cane2") || objectName.equals("Cane3"))) {
                 hasPoint += 2;
+                hasCandy ++;
                 gp.obj[i] = null;
                 gp.ui.showMessage("+ 2 Points !");
             } else if (objectName.equals("Gift1") || objectName.equals("Gift2")) {
                 hasPoint += 5;
+                hasCandy ++;
                 gp.obj[i] = null;
                 gp.ui.showMessage("+ 5 Points !");
             } else if (objectName.equals("Reindeer")) {
@@ -136,6 +131,7 @@ public class Player extends Entity {
             }
         }
     }
+
 
 
     public void draw(Graphics2D g2) {

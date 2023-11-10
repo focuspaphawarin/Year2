@@ -24,7 +24,6 @@ public class CarPoint extends SuperObj
         solidArea.width = 290;
         solidArea.height = 180;
     }
-
     @Override
     public void draw(Graphics2D g2, GamePanel gp)
     {

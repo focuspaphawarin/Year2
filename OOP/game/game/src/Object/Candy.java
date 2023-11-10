@@ -1,5 +1,6 @@
 package Object;
 
+
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
@@ -39,4 +40,7 @@ public class Candy extends SuperObj
             }
         }
     }
+
+
+
 }

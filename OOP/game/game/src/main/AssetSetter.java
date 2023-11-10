@@ -1,8 +1,9 @@
 package main;
 
 import Object.*;
-
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class AssetSetter
 {
@@ -15,7 +16,11 @@ public class AssetSetter
     public AssetSetter(GamePanel gp)
     {
         this.gp = gp;
+
+
     }
+
+
 
     public void setObject()
     {
@@ -53,21 +58,6 @@ public class AssetSetter
     }
 
     public void setGhost() {
-//        gp.ghost[0] = new Ghost(2);
-//        gp.ghost[0].name = "GhostL"; // Set the name for the first ghost
-//        gp.ghost[0].x = random.nextInt(1000 - 300 ) + 300;
-//        gp.ghost[0].y = gp.tileSize * 3;
-//
-//        gp.ghost[1] = new Ghost(1);
-//        gp.ghost[1].name = "GhostR"; // Set the name for the second ghost
-//        gp.ghost[1].x = random.nextInt(1300 - 20 ) + 20;
-//        gp.ghost[1].y = gp.tileSize * 4;
-//
-//        gp.ghost[2] = new Ghost(2);
-//        gp.ghost[2].name = "GhostL"; // Set the name for the third ghost
-//        gp.ghost[2].x = random.nextInt(1300 - 100 ) + 100;
-//        gp.ghost[2].y = gp.tileSize * 5;
-
         gp.obj[7] = new Ghost(2);
         gp.obj[7].name = "GhostL"; // Set the name for the first ghost
         gp.obj[7].x = random.nextInt(1000 - 300 ) + 300;
@@ -84,8 +74,10 @@ public class AssetSetter
         gp.obj[9].y = gp.tileSize * 5;
     }
 
-    public void updateGhost() {
-        for (int i = 0; i < gp.obj.length; i++) {
+    public void updateGhost()
+    {
+        for (int i = 0; i < gp.obj.length; i++)
+        {
             if (gp.obj[i] != null && gp.obj[i].getEntityType().equals("Ghost")) {
                 if (i == 7) {
                     gp.obj[i].x = xGhost;
@@ -97,4 +89,5 @@ public class AssetSetter
             }
         }
     }
+
 }
