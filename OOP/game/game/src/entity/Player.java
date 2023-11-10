@@ -101,6 +101,7 @@ public class Player extends Entity {
     public void pickUpObj(int i) {
         if (i != 999) {
             String objectName = gp.obj[i].name;
+            if(objectName == null) return;
             System.out.println(gp.ghost[i]);
 
             if ((objectName.equals("Candy1") || objectName.equals("Candy2") || objectName.equals("Candy3"))) {
@@ -130,6 +131,7 @@ public class Player extends Entity {
                 }
             }
         }
+
     }
 
 
