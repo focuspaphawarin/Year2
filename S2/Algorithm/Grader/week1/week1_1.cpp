@@ -11,7 +11,6 @@ using namespace std;
     {
         cin >> a;
         arr[i] = a;
-
         // cout << "arr[" << i << "] = " << a << endl;
     }
     // cout << "n = " << n << endl;
