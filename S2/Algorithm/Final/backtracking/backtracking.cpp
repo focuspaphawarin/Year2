@@ -31,7 +31,6 @@ void permute(int x[],int start,int end)
 			}
 			printf("\n");
 		}
-		
 		return;
 	}
 	for(int i=start;i<=end;i++)
