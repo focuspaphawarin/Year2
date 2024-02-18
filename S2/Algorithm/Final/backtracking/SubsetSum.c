@@ -46,6 +46,6 @@ int main()
 {
 	int n = 4;
 	int x[n+1];
-	// subset1(x,0,n);
+	subset1(x,0,n);
 	return 0;
 }
