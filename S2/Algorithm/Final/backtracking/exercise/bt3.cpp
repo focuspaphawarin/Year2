@@ -87,10 +87,10 @@ void Subset1(int x[], int l, int r, int cur_weight, int cur_value)
     } 
     else 
     {
-        // Include the next item
         if (cur_weight + W[l] <= k) 
         {
             x[l+1] = 1;
+            // cout <<"value : " <<cur_weight<< endl;
             Subset1(x, l+1, r, cur_weight + W[l], cur_value + V[l]);
             x[l+1] = 0;
             Subset1(x, l+1, r, cur_weight, cur_value);
