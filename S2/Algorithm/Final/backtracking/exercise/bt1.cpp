@@ -28,7 +28,7 @@ void permute(int x[],int start,int end)
 		{
 			for(int i=1;i<=end;i++)
 			{
-				cout << x[i];
+				cout << x[i] << " ";
 			}
 			cout << endl;
 			return;
