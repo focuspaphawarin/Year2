@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@headlessui/react": "^1.7.18",
+    "@stripe/stripe-js": "^3.0.10",
+    "bcryptjs": "^2.4.3",
+    "firebase": "^10.9.0",
+    "joi": "^17.12.2",
+    "js-cookie": "^3.0.5",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.1",
+    "stripe": "^14.21.0"
+  }
+}

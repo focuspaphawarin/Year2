@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 
@@ -38,5 +39,6 @@ int main()
 			sum += arr[j];
 		}
 	}
+	cout << fixed << setprecision(2);
 	cout << 1.0*sum/n;
 }
