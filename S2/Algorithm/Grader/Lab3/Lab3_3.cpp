@@ -2,57 +2,91 @@
 
 using namespace std;
 
-void swap(int *i, int *j)
+struct result
 {
-    int k = *i;
-    *i = *j;
-    *j = k;
+    int c;
+    int ans;
+};
+void swap(int arr[], int a, int b)
+{
+    int temp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = temp;
 }
-int partition(int a[], int l, int r, int k)
+void s_t(int a[], int i, int j, int k)
 {
-    int pivot, i, j, t;
-    pivot = a[r];
-    i = l;
-    j = r + 1;
-    while(1)
-    {
-        do
-        {
-            ++i;
+    if (a[i] > a[j])
+        swap(a, i, j);
+    if (a[j] > a[k])
+        swap(a, j, k);
+    if (a[i] > a[j])
+        swap(a, i, j);
+}
+int pt(int A[], int l, int r)
+{
+    int m = (l + r) / 2;
+    s_t(A, l, m, r);
+    swap(A, m, r);
 
-        } while(a[i] <= pivot);
-        do
+    int x = A[r], i = l;
+    for (int j=l;j<=r-1;j++)
+    {
+        if (A[j] <= x)
         {
-            --j;
-        } while(a[j] > pivot);
+            swap(A,i,j);
+            i++;
+        }
+    }
+    swap(A,i,r);
+    return i;
+}
+struct result quick_select(int A[], int low, int high, int k, struct result pp)
+{
+    struct result r;
+    r.c = pp.c;
 
-        if (i >= j)
-            break;
-        swap(&a[i], &a[j]);
-    }
-    swap(&a[l], &a[j]);
-    if(k == j+1)
+    if (low == high)
     {
-        return j;
+        r.ans = A[low];
+        return r;
     }
-    else if(k<=j)
+
+    r.c += 1;
+    int p = pt(A, low, high);
+
+    int l_len = p - low;
+    if (k == l_len + 1)
     {
-        partition(a,0,j,k);
+        r.ans = A[p];
+        return r;
+    }
+    else if (k <= l_len)
+    {
+        return quick_select(A, low, p - 1, k, r);
     }
     else
     {
-        partition(a,j+1,r,k-j+1);
+        k = k - (l_len+1);
+        return quick_select(A, p + 1, high, k, r);
     }
 }
 
 int main()
 {
-    int i, n, k, count;
+    int n, k;
     cin >> n >> k;
-    int arr[n];
-    for (i=0;i<n;i++)
+
+    int A[n];
+    for (int i=0;i<n;i++)
     {
-        cin >> arr[i];
+        cin >> A[i];
     }
-    cout << partition(arr,0,n-1,k);
+
+    struct result r;
+    r.c = 0;
+    r = quick_select(A,0,n-1,k,r);
+    cout << r.ans;
+    cout << " ";
+    cout << r.c ;
+    
 }

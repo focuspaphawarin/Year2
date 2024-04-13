@@ -1,57 +1,36 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-void print_sol(int x[],int n,int arr[],int k,int *c){
-	int sum=0;
-	for(int i=1;i<=n;i++)
-    {
-		if(x[i]==1)
-        {
-			sum += arr[i-1];
-		}
-	}	
-    if(sum==k)
-    {
-		if(*c==0)
-        {
-			*c=1;
-		}
-		else
-        {
-			cout<<endl;
-		}
-		for(int i=1;i<=n;i++)
-        {
-			if(x[i]==1)
-            {
-				cout<<arr[i-1]<<" ";
+void subset1(int arr[],int x[],int k,int n,int target){
+	if(k==n){
+		int sum=0;
+		for(int i=0;i<k;i++){
+			if(x[i]==1){
+				sum+=arr[i];
 			}
 		}
+		if(sum==target){
+			for(int i=0;i<k;i++){
+				if(x[i]==1){
+					cout<<arr[i]<<" ";
+				}	
+			}
+			cout<<endl;	
+		}
+	}
+	else{
+		x[k]=1;
+		subset1(arr,x,k+1,n,target);
+		x[k]=0;
+		subset1(arr,x,k+1,n,target);
 	}
 }
-
-void subset1(int x[],int l,int r,int arr[],int k,int *c)
-{
-	if(l==r)
-    {
-		print_sol(x,r,arr,k,c);
+int main(){
+	int n,target;
+	cin>>n>>target;
+	int arr[n], x[n];
+	for(int i=0;i<n;i++){
+		cin>>arr[i];
 	}
-    else
-    {
-		x[l+1]=1;
-		subset1(x,l+1,r,arr,k,c);
-		x[l+1]=0;
-		subset1(x,l+1,r,arr,k,c);
-	}
-}
-
-int main()
-{
-	int n,k,c=0;
-	cin >> n >> k;
-	int x[n+1],arr[n];
-	for(int i=0;i<n;i++)
-    {
-		cin >> arr[i];
-	}
-	subset1(x,0,n,arr,k,&c);
+	subset1(arr,x,0,n,target);
+	return 0;
 }
